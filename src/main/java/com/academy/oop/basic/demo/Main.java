@@ -5,6 +5,7 @@ import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.CarFactory;
 import com.academy.oop.basic.model.factory.PartsStorage;
 import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.service.FileManager;
 
 import java.util.Scanner;
 
@@ -16,15 +17,18 @@ public class Main {
 	public static void main(String[] args) {
 		Main main = new Main();
 		Scanner in = new Scanner(System.in);
-		m1:
-		while (true) {
+		boolean flag = true;
+		while (flag) {
 			System.out.println("\n1 - Create part\n2 - Create car\n3 - Show parts list\n4 - Show Car list\n5 - Exit\nMake a choice:");
 			switch (in.nextInt()) {
 				case 1:
 					main.createPart();
+					FileManager.refreshPartFile();
 					break;
 				case 2:
 					main.createCar();
+					FileManager.refreshCarFile();
+					FileManager.refreshPartFile();
 					break;
 				case 3:
 					main.showPartList();
@@ -33,11 +37,11 @@ public class Main {
 					main.showCarList();
 					break;
 				case 5:
-					break m1;
+					flag = false;
+					break;
 				default:
 					System.out.println("Incorrect");
 			}
-
 		}
 
 	}

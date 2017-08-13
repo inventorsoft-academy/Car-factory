@@ -1,14 +1,17 @@
 package com.academy.oop.basic.service;
 
+import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.PartsType;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
+	private static final Logger log = Logger.getLogger(Main.class);
 
 	private static final String PARTS_FILE_PATH = "src\\main\\resources\\Parts.txt";
 	private static final String CARS_FILE_PATH = "src\\main\\resources\\Cars.txt";
@@ -17,7 +20,9 @@ public class FileManager {
 	private static List<Car> cars;
 
 	public static List<Part> getPartList() {
+
 		if (parts != null) {
+			log.info("return exist parts list");
 			return parts;
 		} else {
 			parts = new ArrayList<>();
@@ -29,17 +34,18 @@ public class FileManager {
 					parts.add(new Part(currentLine[1], PartsType.valueOf(currentLine[3]),
 							Double.parseDouble(currentLine[2]), getNextId(parts)));
 				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
+				log.error(e.getMessage());
 				e.printStackTrace();
 			}
+			log.info("return new parts list");
 			return parts;
 		}
 	}
 
 	public static List<Car> getCarList() {
 		if (cars != null) {
+			log.info("return exist car list");
 			return cars;
 		} else {
 			cars = new ArrayList<>();
@@ -51,11 +57,11 @@ public class FileManager {
 					cars.add(new Car(currentLine[1], currentLine[2], Integer.parseInt(currentLine[3]),
 							currentLine[4], Double.parseDouble(currentLine[5]), getNextId(cars)));
 				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
+				log.error(e.getMessage());
 				e.printStackTrace();
 			}
+			log.info("return new cars list");
 			return cars;
 		}
 	}
@@ -81,7 +87,9 @@ public class FileManager {
 				writer.newLine();
 				writer.flush();
 			}
+			log.info("car list saved");
 		} catch (IOException ex) {
+			log.error(ex.getMessage());
 			System.out.println(ex.getMessage());
 		}
 	}
@@ -103,7 +111,9 @@ public class FileManager {
 				writer.newLine();
 				writer.flush();
 			}
+			log.info("part list saved");
 		} catch (IOException ex) {
+			log.error(ex.getMessage());
 			System.out.println(ex.getMessage());
 		}
 	}
@@ -123,7 +133,9 @@ public class FileManager {
 	private static void clearFile(File file) {
 		try (PrintWriter writer = new PrintWriter(file)) {
 			writer.print("");
+			log.info("file: " + file.getName() + " clean");
 		} catch (FileNotFoundException e) {
+			log.error(e.getMessage());
 			e.printStackTrace();
 		}
 	}

@@ -2,17 +2,17 @@ package com.academy.oop.basic.demo;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.model.factory.CarFactory;
-import com.academy.oop.basic.model.factory.PartsStorage;
-import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.model.factory.*;
 import com.academy.oop.basic.service.FileManager;
+import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Main {
-	PartsStorage partsStorage = new PartsStorage();
-	CarFactory carFactory = new CarFactory();
-	Scanner in = new Scanner(System.in);
+	private static final Logger log = Logger.getLogger(Main.class);
+	private IPartsStorage partsStorage = new PartsStorage();
+	private ICarFactory carFactory = new CarFactory();
+	private Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -24,22 +24,28 @@ public class Main {
 				case 1:
 					main.createPart();
 					FileManager.refreshPartFile();
+					log.info("Part created!");
 					break;
 				case 2:
 					main.createCar();
 					FileManager.refreshCarFile();
 					FileManager.refreshPartFile();
+					log.info("Car created!");
 					break;
 				case 3:
 					main.showPartList();
+					log.info("show parts list");
 					break;
 				case 4:
 					main.showCarList();
+					log.info("show cars list");
 					break;
 				case 5:
+					log.info("exit");
 					flag = false;
 					break;
 				default:
+					log.info("incorrect");
 					System.out.println("Incorrect");
 			}
 		}

@@ -6,19 +6,25 @@ import com.academy.oop.basic.service.FileManager;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PartsStorage implements IPartsStorage {
 
 	private static final Logger log = Logger.getLogger(Main.class);
 
 	@Override
-	public void save(Part part) {
+	public void save(Part part) throws Exception {
 		log.info("save a new part");
-		FileManager.getPartList().add(part);
+		if (part.validate().isEmpty()) {
+			FileManager.getPartList().add(part);
+		} else {
+			throw new Exception(part.validate().stream().collect(Collectors.joining(", ")));
+		}
+
 	}
 
 	@Override
-	public void update(int partID, Part newPart) {
+	public void update(int partID, Part newPart) throws Exception {
 		log.info("update part");
 		remove(partID);
 		save(newPart);

@@ -23,13 +23,10 @@ public class Main {
 			switch (in.nextInt()) {
 				case 1:
 					main.createPart();
-					FileManager.refreshPartFile();
 					log.info("Part created!");
 					break;
 				case 2:
 					main.createCar();
-					FileManager.refreshCarFile();
-					FileManager.refreshPartFile();
 					log.info("Car created!");
 					break;
 				case 3:
@@ -42,6 +39,8 @@ public class Main {
 					break;
 				case 5:
 					log.info("exit");
+					FileManager.refreshPartFile();
+					FileManager.refreshCarFile();
 					flag = false;
 					break;
 				default:
@@ -53,39 +52,66 @@ public class Main {
 	}
 
 	private void createPart() {
-		System.out.println("Enter part name:");
-		String partName = in.next();
-		System.out.println("1 - Engine\n2 - Steering\n3 - Suspension\nSelect the type of part:");
+		String partName = "";
 		PartsType partsType = PartsType.ENGINE;
-		int choice = in.nextInt();
-		if (choice == 1) {
+		Double price = 0.0;
+		boolean flag = false;
+		try {
+			System.out.println("Enter part name:");
+			partName = in.next();
+			System.out.println("1 - Engine\n2 - Steering\n3 - Suspension\nSelect the type of part:");
 			partsType = PartsType.ENGINE;
-		} else if (choice == 2) {
-			partsType = PartsType.STEERING;
-		} else if (choice == 3) {
-			partsType = PartsType.SUSPENSION;
-		} else {
-			System.out.println("Incorrect1! Will be create engine");
+			int choice = in.nextInt();
+			if (choice == 1) {
+				partsType = PartsType.ENGINE;
+			} else if (choice == 2) {
+				partsType = PartsType.STEERING;
+			} else if (choice == 3) {
+				partsType = PartsType.SUSPENSION;
+			} else {
+				System.out.println("Incorrect1! Will be create engine");
+			}
+			System.out.println("Enter price:");
+			price = in.nextDouble();
+			flag = true;
+		} catch (Exception ex) {
+			System.out.println("Incorrectly entered data! Try again");
 		}
-		System.out.println("Enter price:");
-		Double price = in.nextDouble();
-		partsStorage.save(new Part(partName, partsType, price, PartsStorage.getNextId()));
-		System.out.println("Successfully");
+		if (flag) {
+			try {
+				partsStorage.save(new Part(partName, partsType, price, PartsStorage.getNextId()));
+				System.out.println("Successfully");
+			} catch (Exception e) {
+				System.out.println("Fields: " + e.getMessage() + " not valid! Please try again!");
+			}
+		}
 	}
 
 	private void createCar() {
 		CarFactory carFactory = new CarFactory();
-		System.out.println("Enter car brand:");
-		String brand = in.next();
-		System.out.println("Enter car model:");
-		String model = in.next();
-		System.out.println("Enter car color:");
-		String color = in.next();
-		boolean status = carFactory.createCar(brand, model, color);
-		if (status) {
-			System.out.println("Successfully");
-		} else {
-			System.out.println("Unsuccessfully! Do not have a parts! ");
+		String brand = "";
+		String model = "";
+		String color = "";
+		try {
+			System.out.println("Enter car brand:");
+			brand = in.next();
+			System.out.println("Enter car model:");
+			model = in.next();
+			System.out.println("Enter car color:");
+			color = in.next();
+		} catch (Exception ex) {
+			System.out.println("Incorrectly entered data! Try again");
+		}
+		boolean status = false;
+		try {
+			status = carFactory.createCar(brand, model, color);
+			if (status) {
+				System.out.println("Successfully");
+			} else {
+				System.out.println("Unsuccessfully! Do not have a parts! ");
+			}
+		} catch (Exception e) {
+			System.out.println("Fields: " + e.getMessage() + " not valid! Please try again!");
 		}
 	}
 

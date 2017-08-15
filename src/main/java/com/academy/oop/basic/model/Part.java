@@ -1,8 +1,11 @@
 package com.academy.oop.basic.model;
 
 import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.util.Validator;
 
-public class Part {
+import java.util.ArrayList;
+
+public class Part implements Validator {
 
 	private String name;
 
@@ -45,5 +48,18 @@ public class Part {
 
 	public void setPartId(int partId) {
 		this.partId = partId;
+	}
+
+	@Override
+	public ArrayList<String> validate() {
+
+		ArrayList<String> valid = new ArrayList<>();
+		if (name == null || name.length() < 3 || name.length() > 30) {
+			valid.add("name");
+		}
+		if (price < 0 || price > 100000000) {
+			valid.add("price");
+		}
+		return valid;
 	}
 }

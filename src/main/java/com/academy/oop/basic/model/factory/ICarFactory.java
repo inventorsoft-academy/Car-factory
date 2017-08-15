@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ICarFactory {
 
-	boolean createCar(String brand, String model, String color);
+	boolean createCar(String brand, String model, String color) throws Exception;
 
 	List<Car> getCarsList();
 

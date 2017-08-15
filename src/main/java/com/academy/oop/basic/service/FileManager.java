@@ -123,11 +123,15 @@ public class FileManager {
 	}
 
 	public static void refreshCarFile() {
-		saveCars(cars);
+		if (cars != null) {
+			saveCars(cars);
+		}
 	}
 
 	public static void refreshPartFile() {
-		saveParts(parts);
+		if (parts != null) {
+			saveParts(parts);
+		}
 	}
 
 	private static void clearFile(File file) {

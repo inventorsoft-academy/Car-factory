@@ -5,9 +5,9 @@ import com.academy.oop.basic.model.Part;
 import java.util.List;
 
 public interface IPartsStorage {
-	void save(Part part);
+	void save(Part part) throws Exception;
 
-	void update(int partID, Part newPart);
+	void update(int partID, Part newPart) throws Exception;
 
 	void remove(int partID);
 

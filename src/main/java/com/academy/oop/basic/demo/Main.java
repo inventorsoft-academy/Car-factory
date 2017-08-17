@@ -1,18 +1,19 @@
 package com.academy.oop.basic.demo;
 
-import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.*;
 import com.academy.oop.basic.service.FileManager;
+import com.academy.oop.basic.service.FileManagerImpl;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Main {
 	private static final Logger log = Logger.getLogger(Main.class);
-	private IPartsStorage partsStorage = new PartsStorage();
-	private ICarFactory carFactory = new CarFactory();
+	private PartsStorage partsStorage = new PartsStorageImpl();
+	private CarFactory carFactory = new CarFactoryImpl();
 	private Scanner in = new Scanner(System.in);
+	private FileManager fileManager = new FileManagerImpl();
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -39,8 +40,8 @@ public class Main {
 					break;
 				case 5:
 					log.info("exit");
-					FileManager.refreshPartFile();
-					FileManager.refreshCarFile();
+					main.fileManager.refreshPartFile();
+					main.fileManager.refreshCarFile();
 					flag = false;
 					break;
 				default:
@@ -79,7 +80,7 @@ public class Main {
 		}
 		if (flag) {
 			try {
-				partsStorage.save(new Part(partName, partsType, price, PartsStorage.getNextId()));
+				partsStorage.save(new Part(partName, partsType, price, fileManager.getNextId(fileManager.getPartList())));
 				System.out.println("Successfully");
 			} catch (Exception e) {
 				System.out.println("Fields: " + e.getMessage() + " not valid! Please try again!");
@@ -88,7 +89,7 @@ public class Main {
 	}
 
 	private void createCar() {
-		CarFactory carFactory = new CarFactory();
+		CarFactoryImpl carFactoryImpl = new CarFactoryImpl();
 		String brand = "";
 		String model = "";
 		String color = "";
@@ -104,7 +105,7 @@ public class Main {
 		}
 		boolean status = false;
 		try {
-			status = carFactory.createCar(brand, model, color);
+			status = carFactoryImpl.createCar(brand, model, color);
 			if (status) {
 				System.out.println("Successfully");
 			} else {
@@ -116,15 +117,15 @@ public class Main {
 	}
 
 	private void showPartList() {
-		for (Part p : partsStorage.getParts()) {
-			System.out.println(p.getName());
-		}
+		partsStorage.getParts().stream().forEach(part -> System.out.println(part.getPartId() + 1
+				+ " - Name: " + part.getName() + ", Type: " + part.getType().toString().toLowerCase()
+				+ ", Price: " + part.getPrice() + ";"));
 	}
 
 	private void showCarList() {
-		for (Car car : carFactory.getCarsList()) {
-			System.out.println(car.getModel());
-		}
+		carFactory.getCarsList().stream().forEach(car -> System.out.println(car.getCarId() + 1
+				+ " - Brand: " + car.getBrand() + ", Model: " + car.getModel() + ", Color: " + car.getColor() + ", Price: " + car.getPrice()
+				+ ", Created date: " + car.getCreatedDate() + ";"));
 	}
 
 

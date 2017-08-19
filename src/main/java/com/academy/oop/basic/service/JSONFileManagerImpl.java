@@ -1,11 +1,10 @@
 package com.academy.oop.basic.service;
 
-import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.PartsType;
 import com.academy.oop.basic.util.FileCleaner;
-import org.apache.log4j.Logger;
+import com.academy.oop.basic.util.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class JSONFileManagerImpl implements FileManager {
-	private static final Logger log = Logger.getLogger(Main.class);
+	private static final Logger log = Logger.getLogger(JSONFileManagerImpl.class);
 
 	private static final String PARTS_FILE_PATH = "src\\main\\resources\\JSONFiles\\Parts.json";
 	private static final String CARS_FILE_PATH = "src\\main\\resources\\JSONFiles\\Cars.json";

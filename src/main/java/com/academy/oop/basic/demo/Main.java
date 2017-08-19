@@ -4,7 +4,7 @@ import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.*;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.service.JSONFileManagerImpl;
-import org.apache.log4j.Logger;
+import com.academy.oop.basic.util.Logger;
 
 import java.util.Scanner;
 
@@ -76,7 +76,7 @@ public class Main {
 			price = Double.parseDouble(in.nextLine());
 			flag = true;
 		} catch (Exception ex) {
-
+			log.error("incorrect price!");
 			System.out.println("Incorrectly entered data! Try again" + ex.getMessage());
 		}
 		if (flag) {

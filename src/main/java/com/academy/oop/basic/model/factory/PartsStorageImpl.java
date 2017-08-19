@@ -4,7 +4,7 @@ import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.service.JSONFileManagerImpl;
-import org.apache.log4j.Logger;
+import com.academy.oop.basic.util.Logger;
 
 import java.util.List;
 import java.util.stream.Collectors;

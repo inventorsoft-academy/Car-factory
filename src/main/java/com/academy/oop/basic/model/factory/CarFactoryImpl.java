@@ -5,7 +5,7 @@ import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.service.JSONFileManagerImpl;
-import org.apache.log4j.Logger;
+import com.academy.oop.basic.util.Logger;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

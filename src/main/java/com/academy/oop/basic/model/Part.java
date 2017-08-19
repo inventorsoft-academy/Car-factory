@@ -1,7 +1,7 @@
 package com.academy.oop.basic.model;
 
 import com.academy.oop.basic.model.factory.PartsType;
-import com.academy.oop.basic.util.Validator;
+import com.academy.oop.basic.service.Validator;
 
 import java.util.ArrayList;
 

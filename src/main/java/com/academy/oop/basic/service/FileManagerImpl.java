@@ -4,6 +4,7 @@ import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.util.FileCleaner;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -68,21 +69,20 @@ public class FileManagerImpl implements FileManager {
 	private void saveCars(List<Car> cars) {
 		File file = new File(CARS_FILE_PATH);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-			clearFile(file);
+			FileCleaner.crear(file);
 			for (Car car : cars) {
-				StringBuilder builder = new StringBuilder();
-				builder.append(car.getCarId())
-						.append("/")
-						.append(car.getBrand())
-						.append("/")
-						.append(car.getModel())
-						.append("/")
-						.append(car.getCreatedDate())
-						.append("/")
-						.append(car.getColor())
-						.append("/")
-						.append(car.getPrice());
-				writer.append(builder.toString());
+				String builder = String.valueOf(car.getCarId()) +
+						"/" +
+						car.getBrand() +
+						"/" +
+						car.getModel() +
+						"/" +
+						car.getCreatedDate() +
+						"/" +
+						car.getColor() +
+						"/" +
+						car.getPrice();
+				writer.append(builder);
 				writer.newLine();
 				writer.flush();
 			}
@@ -96,17 +96,16 @@ public class FileManagerImpl implements FileManager {
 	private void saveParts(List<Part> parts) {
 		File file = new File(PARTS_FILE_PATH);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-			clearFile(file);
+			FileCleaner.crear(file);
 			for (Part part : parts) {
-				StringBuilder builder = new StringBuilder();
-				builder.append(part.getPartId())
-						.append("/")
-						.append(part.getName())
-						.append("/")
-						.append(part.getPrice())
-						.append("/")
-						.append(part.getType());
-				writer.append(builder.toString());
+				String builder = String.valueOf(part.getPartId()) +
+						"/" +
+						part.getName() +
+						"/" +
+						part.getPrice() +
+						"/" +
+						part.getType();
+				writer.append(builder);
 				writer.newLine();
 				writer.flush();
 			}
@@ -117,8 +116,8 @@ public class FileManagerImpl implements FileManager {
 		}
 	}
 
-	public int getNextId(List parts) {
-		return parts.size();
+	public int getNextId(List list) {
+		return list.size();
 	}
 
 	public void refreshCarFile() {
@@ -132,15 +131,5 @@ public class FileManagerImpl implements FileManager {
 			saveParts(parts);
 		}
 	}
-
-	public void clearFile(File file) {
-		try (PrintWriter writer = new PrintWriter(file)) {
-			writer.print("");
-			log.info("file: " + file.getName() + " clean");
-		} catch (FileNotFoundException e) {
-			log.error(e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
 }
+

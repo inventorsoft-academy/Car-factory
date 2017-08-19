@@ -7,9 +7,9 @@ import java.util.List;
 public interface PartsStorage {
 	void save(Part part) throws Exception;
 
-	void update(int partID, Part newPart) throws Exception;
+	void update(Part part, Part newPart) throws Exception;
 
-	void remove(int partID);
+	void remove(Part part);
 
 	Part getByType(PartsType type);
 

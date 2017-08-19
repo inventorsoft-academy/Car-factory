@@ -1,7 +1,0 @@
-4/brand/model/2017/red/813.0
-5/reno/reno/2017/red/813.0
-6/mercedes/slon/2017/white/491.0
-7/df/dfg/2017/red/2613.0
-8/fdv/dfv/2017/df/302.0
-9/fgn/ssssssssssssss/2017/red/2813.0
-10/wedf/df/2017/df/3513.0

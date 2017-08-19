@@ -3,7 +3,7 @@ package com.academy.oop.basic.demo;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.*;
 import com.academy.oop.basic.service.FileManager;
-import com.academy.oop.basic.service.FileManagerImpl;
+import com.academy.oop.basic.service.JSONFileManagerImpl;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
@@ -13,7 +13,8 @@ public class Main {
 	private PartsStorage partsStorage = new PartsStorageImpl();
 	private CarFactory carFactory = new CarFactoryImpl();
 	private Scanner in = new Scanner(System.in);
-	private FileManager fileManager = new FileManagerImpl();
+	//private FileManager fileManager = new FileManagerImpl();
+	private FileManager fileManager = new JSONFileManagerImpl();
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -21,24 +22,24 @@ public class Main {
 		boolean flag = true;
 		while (flag) {
 			System.out.println("\n1 - Create part\n2 - Create car\n3 - Show parts list\n4 - Show Car list\n5 - Exit\nMake a choice:");
-			switch (in.nextInt()) {
-				case 1:
+			switch (in.next()) {
+				case "1":
 					main.createPart();
 					log.info("Part created!");
 					break;
-				case 2:
+				case "2":
 					main.createCar();
 					log.info("Car created!");
 					break;
-				case 3:
+				case "3":
 					main.showPartList();
 					log.info("show parts list");
 					break;
-				case 4:
+				case "4":
 					main.showCarList();
 					log.info("show cars list");
 					break;
-				case 5:
+				case "5":
 					log.info("exit");
 					main.fileManager.refreshPartFile();
 					main.fileManager.refreshCarFile();
@@ -59,24 +60,24 @@ public class Main {
 		boolean flag = false;
 		try {
 			System.out.println("Enter part name:");
-			partName = in.next();
+			partName = in.nextLine();
 			System.out.println("1 - Engine\n2 - Steering\n3 - Suspension\nSelect the type of part:");
-			partsType = PartsType.ENGINE;
-			int choice = in.nextInt();
-			if (choice == 1) {
+			String choice = in.nextLine();
+			if (choice.equals("1")) {
 				partsType = PartsType.ENGINE;
-			} else if (choice == 2) {
+			} else if (choice.equals("2")) {
 				partsType = PartsType.STEERING;
-			} else if (choice == 3) {
+			} else if (choice.equals("3")) {
 				partsType = PartsType.SUSPENSION;
 			} else {
 				System.out.println("Incorrect1! Will be create engine");
 			}
 			System.out.println("Enter price:");
-			price = in.nextDouble();
+			price = Double.parseDouble(in.nextLine());
 			flag = true;
 		} catch (Exception ex) {
-			System.out.println("Incorrectly entered data! Try again");
+
+			System.out.println("Incorrectly entered data! Try again" + ex.getMessage());
 		}
 		if (flag) {
 			try {
@@ -89,7 +90,7 @@ public class Main {
 	}
 
 	private void createCar() {
-		CarFactoryImpl carFactoryImpl = new CarFactoryImpl();
+		CarFactory carFactory = new CarFactoryImpl();
 		String brand = "";
 		String model = "";
 		String color = "";
@@ -105,7 +106,7 @@ public class Main {
 		}
 		boolean status = false;
 		try {
-			status = carFactoryImpl.createCar(brand, model, color);
+			status = carFactory.createCar(brand, model, color);
 			if (status) {
 				System.out.println("Successfully");
 			} else {

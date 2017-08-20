@@ -11,19 +11,20 @@ public class Logger {
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";
-
-
 	private String level = IN_FILE;
-	private static Logger logger = new Logger();
-	private static String clasName;
+
+
+	private String className;
+	private static Logger logger;
 
 	public static Logger getLogger(Class clas) {
-		setClasName(clas.getName());
+		logger = new Logger();
+		logger.setClassName(clas.getName());
 		return logger;
 	}
 
 	public void info(String massage) {
-		String log = LocalDateTime.now() + " INFO " + clasName + " - " + massage;
+		String log = LocalDateTime.now() + " INFO " + className + " - " + massage;
 		if (level.equals(IN_CONSOLE) || level.equals(IN_CONSOLE_AND_FILE)) {
 			System.out.println(log);
 		} else if (level.equals(IN_FILE) || level.equals(IN_CONSOLE_AND_FILE)) {
@@ -32,7 +33,7 @@ public class Logger {
 	}
 
 	public void error(String massage) {
-		String log = LocalDateTime.now() + " ERROR " + clasName + " - " + massage;
+		String log = LocalDateTime.now() + " ERROR " + className + " - " + massage;
 		if (level.equals(IN_CONSOLE) || level.equals(IN_CONSOLE_AND_FILE)) {
 			System.err.println(log);
 		} else if (level.equals(IN_FILE) || level.equals(IN_CONSOLE_AND_FILE)) {
@@ -50,8 +51,8 @@ public class Logger {
 		}
 	}
 
-	private static void setClasName(String clasName) {
-		Logger.clasName = clasName;
+	private void setClassName(String clasName) {
+		className = clasName;
 	}
 
 	public void setLevel(String level) {

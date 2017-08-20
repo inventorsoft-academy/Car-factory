@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 public class FileCleaner {
 	private static final Logger log = Logger.getLogger(FileCleaner.class);
+
 	public static void crear(File file) {
 		try (PrintWriter writer = new PrintWriter(file)) {
 			writer.print("");

@@ -1,6 +1,5 @@
 package com.academy.oop.basic.model.factory;
 
-import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class CarFactoryImpl implements CarFactory {
 
-	private static final Logger log = Logger.getLogger(Main.class);
+	private static final Logger log = Logger.getLogger(CarFactoryImpl.class);
 	//private FileManager fileManager = new FileManagerImpl();
 	private FileManager fileManager = new JSONFileManagerImpl();
 

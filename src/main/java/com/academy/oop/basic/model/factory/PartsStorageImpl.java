@@ -1,6 +1,5 @@
 package com.academy.oop.basic.model.factory;
 
-import com.academy.oop.basic.demo.Main;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.service.JSONFileManagerImpl;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class PartsStorageImpl implements PartsStorage {
 
-	private static final Logger log = Logger.getLogger(Main.class);
+	private static final Logger log = Logger.getLogger(PartsStorageImpl.class);
 	//private FileManager fileManager = new FileManagerImpl();
 	private FileManager fileManager = new JSONFileManagerImpl();
 

@@ -3,8 +3,8 @@ package com.academy.oop.basic.model.factory;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
-import com.academy.oop.basic.service.JSONFileManagerImpl;
 import com.academy.oop.basic.util.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
 public class CarFactoryImpl implements CarFactory {
 
 	private static final Logger log = Logger.getLogger(CarFactoryImpl.class);
-	//private FileManager fileManager = new FileManagerImpl();
-	private FileManager fileManager = new JSONFileManagerImpl();
+
+	@Autowired
+	private FileManager fileManager;
 
 	@Override
 	public boolean createCar(String brand, String model, String color) throws Exception {

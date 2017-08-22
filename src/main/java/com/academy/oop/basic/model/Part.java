@@ -22,6 +22,9 @@ public class Part implements Validator {
 		this.partId = partId;
 	}
 
+	public Part() {
+	}
+
 	public String getName() {
 		return name;
 	}

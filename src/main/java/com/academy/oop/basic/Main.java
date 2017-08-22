@@ -1,12 +1,10 @@
-package com.academy.oop.basic.demo;
+package com.academy.oop.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan("com.academy.oop.basic")
 public class Main {
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);

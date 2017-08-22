@@ -19,6 +19,8 @@ public class Car implements Validator {
 
 	private int carId;
 
+	public Car() {
+	}
 
 	public Car(String brand, String model, int createdDate, String color, Double price, int carId) {
 		this.brand = brand;

@@ -1,5 +1,6 @@
 package com.academy.oop.basic.demo;
 
+import com.academy.oop.basic.Main;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.CarFactory;
 import com.academy.oop.basic.model.factory.CarFactoryImpl;
@@ -7,7 +8,6 @@ import com.academy.oop.basic.model.factory.PartsStorage;
 import com.academy.oop.basic.model.factory.PartsType;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.util.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ public class ConsoleUI implements CommandLineRunner {
 	private final PartsStorage partsStorage;
 	private final FileManager fileManager;
 
-	@Autowired
+
 	public ConsoleUI(CarFactory carFactory, PartsStorage partsStorage, FileManager fileManager) {
 		this.carFactory = carFactory;
 		this.partsStorage = partsStorage;

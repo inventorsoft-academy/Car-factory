@@ -15,13 +15,19 @@ public class CarFactoryImpl implements CarFactory {
 
 	private static final Logger log = Logger.getLogger(CarFactoryImpl.class);
 
+	private final FileManager fileManager;
+	private final PartsStorage partsStorage;
+
 	@Autowired
-	private FileManager fileManager;
+	public CarFactoryImpl(FileManager fileManager, PartsStorage partsStorage) {
+		this.fileManager = fileManager;
+		this.partsStorage = partsStorage;
+	}
 
 	@Override
 	public boolean createCar(String brand, String model, String color) throws Exception {
 		log.info("trying create a car");
-		PartsStorage partsStorage = new PartsStorageImpl();
+
 		List<Part> parts = new ArrayList<>();
 		parts.add(partsStorage.getByType(PartsType.ENGINE));
 		parts.add(partsStorage.getByType(PartsType.STEERING));
@@ -38,6 +44,8 @@ public class CarFactoryImpl implements CarFactory {
 		if (car.validate().isEmpty()) {
 			fileManager.getCarList().add(car);
 			parts.forEach(partsStorage::remove);
+			fileManager.refreshPartFile();
+			fileManager.refreshCarFile();
 			log.info("car created!");
 			return true;
 		} else {

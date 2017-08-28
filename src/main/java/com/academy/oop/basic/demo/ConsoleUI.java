@@ -3,7 +3,6 @@ package com.academy.oop.basic.demo;
 import com.academy.oop.basic.Main;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.CarFactory;
-import com.academy.oop.basic.model.factory.CarFactoryImpl;
 import com.academy.oop.basic.model.factory.PartsStorage;
 import com.academy.oop.basic.model.factory.PartsType;
 import com.academy.oop.basic.service.FileManager;
@@ -103,7 +102,6 @@ public class ConsoleUI implements CommandLineRunner {
 	}
 
 	private void createCar() {
-		CarFactory carFactory = new CarFactoryImpl();
 		String brand = "";
 		String model = "";
 		String color = "";

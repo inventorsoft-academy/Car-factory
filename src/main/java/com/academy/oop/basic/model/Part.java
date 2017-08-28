@@ -13,7 +13,9 @@ public class Part implements Validator {
 
 	private Double price;
 
-	private int partId = 0;
+	private int partId;
+
+	private boolean used = false;
 
 	public Part(String name, PartsType type, Double price, int partId) {
 		this.name = name;
@@ -51,6 +53,14 @@ public class Part implements Validator {
 
 	public void setPartId(int partId) {
 		this.partId = partId;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
 	}
 
 	@Override

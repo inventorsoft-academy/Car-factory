@@ -3,6 +3,7 @@ package com.academy.oop.basic.model.factory;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.FileManager;
 import com.academy.oop.basic.util.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -25,6 +26,21 @@ public class PartsStorageImpl implements PartsStorage {
 		}
 	}
 
+
+	public void saveJSON(JSONObject obj) throws Exception {
+		log.info("save a new part");
+		Part part = new Part(obj.get("name").toString(), PartsType.valueOf(obj.get("type").toString()),
+				Double.parseDouble(obj.get("price").toString()), fileManager.getNextId(fileManager.getPartList()));
+		if (part.validate().isEmpty()) {
+			fileManager.getPartList().add(part);
+			fileManager.refreshPartFile();
+		} else {
+			String ex = part.validate().stream().collect(Collectors.joining(", "));
+			log.error(ex);
+			throw new Exception(ex);
+		}
+	}
+
 	@Override
 	public void update(Part part, Part newPart) throws Exception {
 		log.info("update part");
@@ -43,7 +59,7 @@ public class PartsStorageImpl implements PartsStorage {
 		log.info("trying get part by type");
 		List<Part> parts = fileManager.getPartList();
 		for (Part p : parts) {
-			if (p.getType() == type) {
+			if (p.getType().equals(type)) {
 				log.info("return part!");
 				return p;
 			}

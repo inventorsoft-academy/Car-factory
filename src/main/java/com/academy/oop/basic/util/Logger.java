@@ -11,7 +11,7 @@ public class Logger {
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";
-	private String level = IN_FILE;
+	private static String level = IN_FILE;
 
 
 	private String className;

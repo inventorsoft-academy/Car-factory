@@ -14,7 +14,7 @@ public class SpringBootConfig {
 
 	@Bean
 	public CarFactory carFactory() {
-		return new CarFactoryImpl();
+		return new CarFactoryImpl(fileManager(), partStorage());
 	}
 
 	@Bean

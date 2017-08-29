@@ -1,0 +1,57 @@
+<!--<div class="container" style="width: 35%;">-->
+<!--<form [formGroup]="newCarForm" (submit)="saveCar()">-->
+<!--<label for="brand">Brand</label>-->
+<!--<input formControlName="brand" id="brand" class="form-control">-->
+<!--<label for="model">Model</label>-->
+<!--<input  formControlName="model" id="model" class="form-control">-->
+<!--<label for="Color">Color</label>-->
+<!--<input  formControlName="color" id="Color" class="form-control">-->
+<!--<hr/>-->
+<!--<button class="btn btn-primary" [disabled]="newCarForm.invalid">Create car</button>-->
+<!--</form>-->
+<!--</div>-->
+<div fxLayout="row" fxLayoutAlign="center start">
+<form [formGroup]="newCarForm" (submit)="saveCar()" >
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <md-input-container class="example-full-width">
+          <input mdInput placeholder="Brand" formControlName="brand">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="example-full-width">
+        <input mdInput placeholder="Model" formControlName="model">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class="example-full-width">
+        <input mdInput placeholder="Color" formControlName="color">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--<button md-button [mdMenuTriggerFor]="menu">Menu</button>-->
+        <!--<md-menu #menu="mdMenu">-->
+           <!--<md-checkbox md-menu-item *ngFor="let type of types" [value]="type">{{type.toLowerCase()}}</md-checkbox>-->
+        <!--</md-menu>-->
+        <button md-button [mdMenuTriggerFor]="menu">Menu</button>
+        <md-menu #menu="mdMenu">
+          <md-checkbox *ngFor="let type of types" [value]="type">{{type.toLowerCase()}}</md-checkbox>
+          <button md-menu-item>OK</button>
+        </md-menu>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button md-raised-button [disabled]="newCarForm.invalid">Create car</button>
+      </td>
+    </tr>
+  </table>
+</form>
+  </div>

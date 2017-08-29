@@ -1,0 +1,24 @@
+<div class="container" style="width: 50%;">
+  <label for="table">All parts</label>
+  <table class="table  table-hover" id="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let part of partList" (click)="showPartDetails(part.partId)">
+      <td>{{part.partId}}</td>
+      <td>{{part.name}}</td>
+      <td>{{part.type}}</td>
+      <td>{{part.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

@@ -1,0 +1,15 @@
+<div class="container" style="width: 35%;">
+  <form [formGroup]="newPartForm" (submit)="savePart()">
+    <label for="name">Name</label>
+    <input formControlName="name" id="name" class="form-control">
+    <label for="type">Type</label>
+    <select #selectElem id="type"  (change)="setType(selectElem.value)" class="form-control">
+      <option>Select type!</option>
+      <option *ngFor="let type of types" [value]="type">{{type}}</option>
+    </select>
+    <label for="price">Price</label>
+    <input  formControlName="price" id="price" class="form-control">
+    <hr/>
+    <button class="btn btn-primary" [disabled]="newPartForm.invalid">Save part</button>
+  </form>
+</div>

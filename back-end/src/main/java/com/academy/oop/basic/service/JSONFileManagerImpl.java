@@ -21,8 +21,8 @@ import java.util.Scanner;
 public class JSONFileManagerImpl implements FileManager {
 	private static final Logger log = Logger.getLogger(JSONFileManagerImpl.class);
 
-	private static final String PARTS_FILE_PATH = "back-end\\src\\main\\resources\\JSONFiles\\Parts.json";
-	private static final String CARS_FILE_PATH = "back-end\\src\\main\\resources\\JSONFiles\\Cars.json";
+	private static final String PARTS_FILE_PATH = "src\\main\\resources\\JSONFiles\\Parts.json";
+	private static final String CARS_FILE_PATH = "src\\main\\resources\\JSONFiles\\Cars.json";
 
 	private static List<Part> parts;
 	private static List<Car> cars;

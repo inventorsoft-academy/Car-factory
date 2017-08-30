@@ -1,4 +1,4 @@
-package com.academy.oop.basic.controllers;
+package com.academy.oop.basic.controller;
 
 
 import com.academy.oop.basic.model.Car;

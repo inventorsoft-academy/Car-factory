@@ -1,7 +1,10 @@
-package com.academy.oop.basic.model.factory;
+package com.academy.oop.basic.service.impl;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
+import com.academy.oop.basic.enums.PartsType;
+import com.academy.oop.basic.service.CarService;
+import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarFactoryImpl implements CarFactory {
+public class CarServiceImpl implements CarService {
 
-	private static final Logger log = Logger.getLogger(CarFactoryImpl.class);
+	private static final Logger log = Logger.getLogger(CarServiceImpl.class);
 
 	private final FileManager fileManager;
-	private final PartsStorage partsStorage;
+	private final PartService partsStorage;
 
 	@Autowired
-	public CarFactoryImpl(FileManager fileManager, PartsStorage partsStorage) {
+	public CarServiceImpl(FileManager fileManager, PartService partsStorage) {
 		this.fileManager = fileManager;
 		this.partsStorage = partsStorage;
 	}

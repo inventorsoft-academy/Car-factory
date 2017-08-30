@@ -4,8 +4,11 @@ import com.academy.oop.basic.util.Validator;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Car implements Validator {
+
+	private AtomicInteger uniqueId = new AtomicInteger();
 
 	private String brand;
 
@@ -20,15 +23,16 @@ public class Car implements Validator {
 	private int carId;
 
 	public Car() {
+		this.carId = uniqueId.getAndIncrement();
 	}
 
-	public Car(String brand, String model, int createdDate, String color, Double price, int carId) {
+	public Car(String brand, String model, int createdDate, String color, Double price) {
 		this.brand = brand;
 		this.model = model;
 		this.createdDate = createdDate;
 		this.color = color;
 		this.price = price;
-		this.carId = carId;
+		this.carId = uniqueId.getAndIncrement();
 
 	}
 

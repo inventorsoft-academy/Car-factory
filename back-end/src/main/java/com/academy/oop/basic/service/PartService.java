@@ -1,11 +1,12 @@
-package com.academy.oop.basic.model.factory;
+package com.academy.oop.basic.service;
 
 import com.academy.oop.basic.model.Part;
+import com.academy.oop.basic.enums.PartsType;
 import org.json.simple.JSONObject;
 
 import java.util.List;
 
-public interface PartsStorage {
+public interface PartService {
 
 	void saveJSON(JSONObject obj) throws Exception;
 
@@ -18,4 +19,7 @@ public interface PartsStorage {
 	Part getByType(PartsType type);
 
 	List<Part> getParts();
+
+
+
 }

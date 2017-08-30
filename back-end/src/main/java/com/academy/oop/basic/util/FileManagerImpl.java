@@ -2,7 +2,7 @@ package com.academy.oop.basic.util;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.enums.PartsType;
 
 import java.io.*;
 import java.util.ArrayList;

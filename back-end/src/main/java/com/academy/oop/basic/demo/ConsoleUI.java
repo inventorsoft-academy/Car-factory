@@ -2,9 +2,9 @@ package com.academy.oop.basic.demo;
 
 import com.academy.oop.basic.Main;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.model.factory.CarFactory;
-import com.academy.oop.basic.model.factory.PartsStorage;
-import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.service.CarService;
+import com.academy.oop.basic.service.PartService;
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +17,12 @@ public class ConsoleUI implements CommandLineRunner {
 	private static Logger log = Logger.getLogger(Main.class);
 	private Scanner in = new Scanner(System.in);
 
-	private final CarFactory carFactory;
-	private final PartsStorage partsStorage;
+	private final CarService carFactory;
+	private final PartService partsStorage;
 	private final FileManager fileManager;
 
 
-	public ConsoleUI(CarFactory carFactory, PartsStorage partsStorage, FileManager fileManager) {
+	public ConsoleUI(CarService carFactory, PartService partsStorage, FileManager fileManager) {
 		this.carFactory = carFactory;
 		this.partsStorage = partsStorage;
 		this.fileManager = fileManager;

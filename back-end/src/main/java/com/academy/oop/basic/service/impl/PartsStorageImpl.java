@@ -1,6 +1,8 @@
-package com.academy.oop.basic.model.factory;
+package com.academy.oop.basic.service.impl;
 
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
+import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.json.simple.JSONObject;
@@ -9,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PartsStorageImpl implements PartsStorage {
+public class PartsStorageImpl implements PartService {
 
 	private static final Logger log = Logger.getLogger(PartsStorageImpl.class);
 

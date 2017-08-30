@@ -2,7 +2,7 @@ package com.academy.oop.basic.controller;
 
 
 import com.academy.oop.basic.model.Car;
-import com.academy.oop.basic.model.factory.CarFactory;
+import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.util.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CarController {
     private static final Logger log = Logger.getLogger(CarController.class);
 
     @Autowired
-    private CarFactory carFactory;
+    private CarService carFactory;
 
     @PostMapping("/create/car")
     public void createCar(@RequestBody JSONObject obj) {

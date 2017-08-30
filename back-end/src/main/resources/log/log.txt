@@ -1,21 +1,23 @@
-2017-08-30T14:45:17.796 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
+2017-08-30T14:45:17.796 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
 2017-08-30T14:45:17.832 ERROR com.academy.oop.basic.util.JSONFileManagerImpl - src\main\resources\JSONFiles\Parts.json (Системе не удается найти указанный путь)
 2017-08-30T14:45:17.832 ERROR com.academy.oop.basic.util.JSONFileManagerImpl - src\main\resources\JSONFiles\Parts.json (Системе не удается найти указанный путь)
 2017-08-30T14:45:17.848 ERROR com.academy.oop.basic.util.JSONFileManagerImpl - src\main\resources\JSONFiles\Parts.json (Системе не удается найти указанный путь)
-2017-08-30T14:46:09.174 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:29.497 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.066 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.273 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.466 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.679 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.831 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:46:30.989 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:04.361 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
+2017-08-30T14:46:09.174 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:29.497 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.066 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.273 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.466 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.679 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.831 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:46:30.989 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:04.361 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
 2017-08-30T14:47:04.361 ERROR com.academy.oop.basic.util.JSONFileManagerImpl - back-end\src\main\resources\JSONFiles\Parts.json (Не удается найти указанный файл)
 2017-08-30T14:47:04.361 ERROR com.academy.oop.basic.util.JSONFileManagerImpl - back-end\src\main\resources\JSONFiles\Parts.json (Не удается найти указанный файл)
-2017-08-30T14:47:05.348 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:16.203 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:16.966 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:17.153 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:17.343 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
-2017-08-30T14:47:17.516 INFO com.academy.oop.basic.model.factory.PartsStorageImpl - save a new part
+2017-08-30T14:47:05.348 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:16.203 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:16.966 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:17.153 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:17.343 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T14:47:17.516 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T15:13:08.271 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T15:13:10.009 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part

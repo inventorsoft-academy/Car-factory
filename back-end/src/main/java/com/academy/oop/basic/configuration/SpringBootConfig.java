@@ -1,9 +1,9 @@
 package com.academy.oop.basic.configuration;
 
-import com.academy.oop.basic.model.factory.CarFactory;
-import com.academy.oop.basic.model.factory.CarFactoryImpl;
-import com.academy.oop.basic.model.factory.PartsStorage;
-import com.academy.oop.basic.model.factory.PartsStorageImpl;
+import com.academy.oop.basic.service.CarService;
+import com.academy.oop.basic.service.impl.CarServiceImpl;
+import com.academy.oop.basic.service.PartService;
+import com.academy.oop.basic.service.impl.PartsStorageImpl;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.JSONFileManagerImpl;
 import org.springframework.context.annotation.Bean;
@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 public class SpringBootConfig {
 
 	@Bean
-	public CarFactory carFactory() {
-		return new CarFactoryImpl(fileManager(), partStorage());
+	public CarService carFactory() {
+		return new CarServiceImpl(fileManager(), partStorage());
 	}
 
 	@Bean
-	public PartsStorage partStorage() {
+	public PartService partStorage() {
 		return new PartsStorageImpl();
 	}
 

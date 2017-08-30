@@ -1,11 +1,14 @@
 package com.academy.oop.basic.model;
 
-import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Validator;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Part implements Validator {
+
+	private AtomicInteger uniqueId = new AtomicInteger();
 
 	private String name;
 
@@ -17,14 +20,15 @@ public class Part implements Validator {
 
 	private boolean used = false;
 
-	public Part(String name, PartsType type, Double price, int partId) {
+	public Part(String name, PartsType type, Double price) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
-		this.partId = partId;
+		this.partId = uniqueId.getAndDecrement();
 	}
 
 	public Part() {
+		this.partId = uniqueId.getAndDecrement();
 	}
 
 	public String getName() {
@@ -75,4 +79,6 @@ public class Part implements Validator {
 		}
 		return valid;
 	}
+
+
 }

@@ -2,9 +2,9 @@ package com.academy.oop.basic.controller;
 
 
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.model.factory.CarFactory;
-import com.academy.oop.basic.model.factory.PartsStorage;
-import com.academy.oop.basic.model.factory.PartsType;
+import com.academy.oop.basic.service.CarService;
+import com.academy.oop.basic.service.PartService;
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +28,10 @@ public class PartController {
 	private static final Logger log = Logger.getLogger(PartController.class);
 
 	@Autowired
-	private PartsStorage partsStorage;
+	private PartService partsStorage;
 
 	@Autowired
-	private CarFactory carFactory;
+	private CarService carFactory;
 
 
 	@GetMapping("/parts")

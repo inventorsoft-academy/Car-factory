@@ -1,10 +1,10 @@
-package com.academy.oop.basic.model.factory;
+package com.academy.oop.basic.service;
 
 import com.academy.oop.basic.model.Car;
 
 import java.util.List;
 
-public interface CarFactory {
+public interface CarService {
 
 	boolean createCar(String brand, String model, String color) throws Exception;
 

@@ -3,7 +3,7 @@ package com.academy.oop.basic.configuration;
 import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.service.impl.CarServiceImpl;
 import com.academy.oop.basic.service.PartService;
-import com.academy.oop.basic.service.impl.PartsStorageImpl;
+import com.academy.oop.basic.service.impl.PartServiceImpl;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.JSONFileManagerImpl;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ public class SpringBootConfig {
 
 	@Bean
 	public PartService partStorage() {
-		return new PartsStorageImpl();
+		return new PartServiceImpl();
 	}
 
 

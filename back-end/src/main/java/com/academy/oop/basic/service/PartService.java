@@ -20,6 +20,10 @@ public interface PartService {
 
 	List<Part> getParts();
 
+	Part getPartById(int id);
 
+	boolean addPart(Part part);
+
+	boolean addParts(List<Part> parts);
 
 }

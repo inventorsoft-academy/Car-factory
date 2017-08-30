@@ -80,5 +80,29 @@ public class Part implements Validator {
 		return valid;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Part)) return false;
 
+		Part part = (Part) o;
+
+		if (getPartId() != part.getPartId()) return false;
+		if (isUsed() != part.isUsed()) return false;
+		if (uniqueId != null ? !uniqueId.equals(part.uniqueId) : part.uniqueId != null) return false;
+		if (!getName().equals(part.getName())) return false;
+		if (getType() != part.getType()) return false;
+		return getPrice().equals(part.getPrice());
+	}
+
+	@Override
+	public int hashCode() {
+		int result = uniqueId != null ? uniqueId.hashCode() : 0;
+		result = 31 * result + getName().hashCode();
+		result = 31 * result + getType().hashCode();
+		result = 31 * result + getPrice().hashCode();
+		result = 31 * result + getPartId();
+		result = 31 * result + (isUsed() ? 1 : 0);
+		return result;
+	}
 }

@@ -93,4 +93,32 @@ public class Car implements Validator {
 		}
 		return valid;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Car)) return false;
+
+		Car car = (Car) o;
+
+		if (getCreatedDate() != car.getCreatedDate()) return false;
+		if (getCarId() != car.getCarId()) return false;
+		if (uniqueId != null ? !uniqueId.equals(car.uniqueId) : car.uniqueId != null) return false;
+		if (!getBrand().equals(car.getBrand())) return false;
+		if (!getModel().equals(car.getModel())) return false;
+		if (!getColor().equals(car.getColor())) return false;
+		return getPrice().equals(car.getPrice());
+	}
+
+	@Override
+	public int hashCode() {
+		int result = uniqueId != null ? uniqueId.hashCode() : 0;
+		result = 31 * result + getBrand().hashCode();
+		result = 31 * result + getModel().hashCode();
+		result = 31 * result + getCreatedDate();
+		result = 31 * result + getColor().hashCode();
+		result = 31 * result + getPrice().hashCode();
+		result = 31 * result + getCarId();
+		return result;
+	}
 }

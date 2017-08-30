@@ -19,7 +19,7 @@ public class FileManagerImpl implements FileManager {
 	private static List<Part> parts;
 	private static List<Car> cars;
 
-	public List<Part> getPartList() {
+	public List<Part> loadPartList() {
 		if (parts != null) {
 			log.info("return exist parts list");
 			return parts;
@@ -42,7 +42,7 @@ public class FileManagerImpl implements FileManager {
 		}
 	}
 
-	public List<Car> getCarList() {
+	public List<Car> loadCarList() {
 		if (cars != null) {
 			log.info("return exist car list");
 			return cars;

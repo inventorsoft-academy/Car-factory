@@ -42,7 +42,7 @@ public class CarFactoryImpl implements CarFactory {
 		Car car = new Car(brand, model, LocalDateTime.now().getYear(), color, price,
 				fileManager.getNextId(getCarsList()));
 		if (car.validate().isEmpty()) {
-			fileManager.getCarList().add(car);
+			fileManager.loadCarList().add(car);
 			parts.forEach(partsStorage::remove);
 			fileManager.refreshPartFile();
 			fileManager.refreshCarFile();
@@ -56,6 +56,6 @@ public class CarFactoryImpl implements CarFactory {
 
 	@Override
 	public List<Car> getCarsList() {
-		return fileManager.getCarList();
+		return fileManager.loadCarList();
 	}
 }

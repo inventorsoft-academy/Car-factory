@@ -93,7 +93,7 @@ public class ConsoleUI implements CommandLineRunner {
 		}
 		if (flag) {
 			try {
-				partsStorage.save(new Part(partName, partsType, price, fileManager.getNextId(fileManager.getPartList())));
+				partsStorage.save(new Part(partName, partsType, price, fileManager.getNextId(fileManager.loadPartList())));
 				System.out.println("Successfully");
 			} catch (Exception e) {
 				System.out.println("Fields: " + e.getMessage() + " not valid! Please try again!");

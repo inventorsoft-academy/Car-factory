@@ -20,7 +20,7 @@ public class PartsStorageImpl implements PartsStorage {
 	public void save(Part part) throws Exception {
 		log.info("save a new part");
 		if (part.validate().isEmpty()) {
-			fileManager.getPartList().add(part);
+			fileManager.loadPartList().add(part);
 		} else {
 			throw new Exception(part.validate().stream().collect(Collectors.joining(", ")));
 		}
@@ -30,9 +30,9 @@ public class PartsStorageImpl implements PartsStorage {
 	public void saveJSON(JSONObject obj) throws Exception {
 		log.info("save a new part");
 		Part part = new Part(obj.get("name").toString(), PartsType.valueOf(obj.get("type").toString()),
-				Double.parseDouble(obj.get("price").toString()), fileManager.getNextId(fileManager.getPartList()));
+				Double.parseDouble(obj.get("price").toString()), fileManager.getNextId(fileManager.loadPartList()));
 		if (part.validate().isEmpty()) {
-			fileManager.getPartList().add(part);
+			fileManager.loadPartList().add(part);
 			fileManager.refreshPartFile();
 		} else {
 			String ex = part.validate().stream().collect(Collectors.joining(", "));
@@ -51,13 +51,13 @@ public class PartsStorageImpl implements PartsStorage {
 	@Override
 	public void remove(Part part) {
 		log.info("remove part");
-		fileManager.getPartList().remove(part);
+		fileManager.loadPartList().remove(part);
 	}
 
 	@Override
 	public Part getByType(PartsType type) {
 		log.info("trying get part by type");
-		List<Part> parts = fileManager.getPartList();
+		List<Part> parts = fileManager.loadPartList();
 		for (Part p : parts) {
 			if (p.getType().equals(type)) {
 				log.info("return part!");
@@ -71,6 +71,6 @@ public class PartsStorageImpl implements PartsStorage {
 	@Override
 	public List<Part> getParts() {
 		log.info("get part list");
-		return fileManager.getPartList();
+		return fileManager.loadPartList();
 	}
 }

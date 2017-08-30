@@ -6,9 +6,9 @@ import com.academy.oop.basic.model.Part;
 import java.util.List;
 
 public interface FileManager {
-	List<Part> getPartList();
+	List<Part> loadPartList();
 
-	List<Car> getCarList();
+	List<Car> loadCarList();
 
 	int getNextId(List parts);
 

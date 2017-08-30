@@ -30,4 +30,7 @@ public interface PartService {
 
 	boolean deletePartById(int id);
 
+	boolean deletePart(Part part);
+
+	void deleteParts();
 }

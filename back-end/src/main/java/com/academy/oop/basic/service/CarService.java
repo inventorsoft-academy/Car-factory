@@ -10,4 +10,7 @@ public interface CarService {
 
 	List<Car> getCarsList();
 
+	boolean createCar(Car car);
+
+	Car getCarById(int id);
 }

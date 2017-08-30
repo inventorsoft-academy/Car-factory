@@ -1,22 +1,18 @@
 package com.academy.oop.basic.controller;
 
 
-import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.service.CarService;
-import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.enums.PartsType;
-import com.academy.oop.basic.util.Logger;
-import org.json.simple.JSONObject;
+import com.academy.oop.basic.model.Part;
+import com.academy.oop.basic.service.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/car-factory")
+@RequestMapping(value = "/car-factory/parts")
 @CrossOrigin(origins = "*", methods = {
 		RequestMethod.GET,
 		RequestMethod.POST,
@@ -25,46 +21,39 @@ import java.util.List;
 		RequestMethod.OPTIONS})
 public class PartController {
 
-	private static final Logger log = Logger.getLogger(PartController.class);
-
 	@Autowired
-	private PartService partsStorage;
+	private PartService partService;
 
-	@Autowired
-	private CarService carFactory;
-
-
-	@GetMapping("/parts")
-	public ResponseEntity<List<Part>> getParts() {
-		if (partsStorage.getParts() != null) {
-			return new ResponseEntity<>(partsStorage.getParts(), HttpStatus.OK);
+	@PostMapping
+	public ResponseEntity<Part> createPart(@RequestBody Part part) {
+		if (partService.addPart(part)) {
+			return new ResponseEntity<>(part, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@GetMapping("/part/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Part> getPartById(@PathVariable int id) {
-		List<Part> parts = partsStorage.getParts();
-		for (Part part : parts) {
-			if (part.getPartId() == id) {
-				return new ResponseEntity<>(part, HttpStatus.OK);
-			}
+		if (partService.getPartById(id) != null) {
+			return new ResponseEntity<>(partService.getPartById(id), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
-	@PostMapping(value = "/create/part", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void createPart(@RequestBody JSONObject obj) {
-		try {
-			partsStorage.saveJSON(obj);
-		} catch (Exception e) {
-			log.error(e.getMessage());
+	@GetMapping
+	public ResponseEntity<List<Part>> getParts() {
+		if (partService.getParts() != null) {
+			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
 		}
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@GetMapping(value = "/types", produces = MediaType.APPLICATION_JSON_VALUE)
-	public PartsType[] getTypes() {
-		return PartsType.values();
+	@GetMapping("/types")
+	public ResponseEntity<PartsType[]> getTypes() {
+		if (PartsType.values().length > 1) {
+			return new ResponseEntity<>(PartsType.values(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 

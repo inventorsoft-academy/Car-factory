@@ -3,15 +3,15 @@ package com.academy.oop.basic.controller;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.service.CarService;
-import com.academy.oop.basic.util.Logger;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/car-factory")
+@RequestMapping(value = "/car-factory/cars")
 @CrossOrigin(origins = "*", methods = {
         RequestMethod.GET,
         RequestMethod.POST,
@@ -21,34 +21,32 @@ import java.util.List;
 
 public class CarController {
 
-    private static final Logger log = Logger.getLogger(CarController.class);
-
     @Autowired
-    private CarService carFactory;
+    private CarService carService;
 
-    @PostMapping("/create/car")
-    public void createCar(@RequestBody JSONObject obj) {
-        try {
-            carFactory.createCar(obj.get("brand").toString(), obj.get("model").toString(), obj.get("color").toString());
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
+    @PostMapping
+    public ResponseEntity<Car> createCar(@RequestBody Car car) {
+       if (carService.createCar(car)) {
+           return new ResponseEntity<>(car, HttpStatus.CREATED);
+       }
+       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/car/{id}")
-    public Car getCarById(@PathVariable int id) {
-        List<Car> cars = carFactory.getCarsList();
-        for (Car car : cars) {
-            if (car.getCarId() == id) {
-                return car;
-            }
+    @GetMapping("/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable int id) {
+        if (carService.getCarById(id) != null) {
+            return new ResponseEntity<>(carService.getCarById(id), HttpStatus.OK);
         }
-        return null;
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
-    @GetMapping("/cars")
-    public List<Car> getCars() {
-        return carFactory.getCarsList();
+    @GetMapping
+    public ResponseEntity<List<Car>> getCars() {
+        if (carService.getCarsList() != null) {
+            return new ResponseEntity<>(carService.getCarsList(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 

@@ -1,39 +1,71 @@
 package com.academy.oop.basic.model;
 
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Validator;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Car implements Validator {
 
-	private AtomicInteger uniqueId = new AtomicInteger();
+	private static AtomicInteger uniqueId = new AtomicInteger();
+
+	private int carId;
 
 	private String brand;
 
 	private String model;
 
-	private int createdDate;
+	private List<Part> parts;
+
+	private LocalDate createdDate;
 
 	private String color;
 
 	private Double price;
 
-	private int carId;
-
 	public Car() {
 		this.carId = uniqueId.getAndIncrement();
+		this.createdDate = LocalDate.now();
+		this.parts = Arrays.asList(
+				new Part("default engine", PartsType.ENGINE, 1.0),
+				new Part("default suspension", PartsType.SUSPENSION, 1.0),
+				new Part("default steering", PartsType.STEERING, 1.0)
+		);
 	}
 
-	public Car(String brand, String model, int createdDate, String color, Double price) {
+	public Car(String brand, String model, String color) {
 		this.brand = brand;
 		this.model = model;
-		this.createdDate = createdDate;
+		this.createdDate = LocalDate.now();
 		this.color = color;
-		this.price = price;
+		this.price = 0.0;
 		this.carId = uniqueId.getAndIncrement();
+		this.parts = Arrays.asList(
+				new Part("default engine", PartsType.ENGINE, 1.0),
+				new Part("default suspension", PartsType.SUSPENSION, 1.0),
+				new Part("default steering", PartsType.STEERING, 1.0)
+		);
 
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public List<Part> getParts() {
+		return parts;
+	}
+
+	public void setParts(List<Part> parts) {
+		this.parts = parts;
 	}
 
 	public String getBrand() {
@@ -44,7 +76,7 @@ public class Car implements Validator {
 		return model;
 	}
 
-	public int getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
@@ -82,9 +114,6 @@ public class Car implements Validator {
 		if (model == null || model.length() < 3 || model.length() > 30) {
 			valid.add("model");
 		}
-		if (createdDate < 1900 || createdDate > LocalDateTime.now().getYear()) {
-			valid.add("created Date");
-		}
 		if (color == null || color.length() < 3 || color.length() > 30) {
 			valid.add("color");
 		}
@@ -97,28 +126,30 @@ public class Car implements Validator {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Car)) return false;
+		if (o == null || getClass() != o.getClass()) return false;
 
 		Car car = (Car) o;
 
-		if (getCreatedDate() != car.getCreatedDate()) return false;
-		if (getCarId() != car.getCarId()) return false;
+		if (carId != car.carId) return false;
 		if (uniqueId != null ? !uniqueId.equals(car.uniqueId) : car.uniqueId != null) return false;
-		if (!getBrand().equals(car.getBrand())) return false;
-		if (!getModel().equals(car.getModel())) return false;
-		if (!getColor().equals(car.getColor())) return false;
-		return getPrice().equals(car.getPrice());
+		if (!brand.equals(car.brand)) return false;
+		if (!model.equals(car.model)) return false;
+		if (parts != null ? !parts.equals(car.parts) : car.parts != null) return false;
+		if (!createdDate.equals(car.createdDate)) return false;
+		if (color != null ? !color.equals(car.color) : car.color != null) return false;
+		return price.equals(car.price);
 	}
 
 	@Override
 	public int hashCode() {
 		int result = uniqueId != null ? uniqueId.hashCode() : 0;
-		result = 31 * result + getBrand().hashCode();
-		result = 31 * result + getModel().hashCode();
-		result = 31 * result + getCreatedDate();
-		result = 31 * result + getColor().hashCode();
-		result = 31 * result + getPrice().hashCode();
-		result = 31 * result + getCarId();
+		result = 31 * result + carId;
+		result = 31 * result + brand.hashCode();
+		result = 31 * result + model.hashCode();
+		result = 31 * result + (parts != null ? parts.hashCode() : 0);
+		result = 31 * result + createdDate.hashCode();
+		result = 31 * result + (color != null ? color.hashCode() : 0);
+		result = 31 * result + price.hashCode();
 		return result;
 	}
 }

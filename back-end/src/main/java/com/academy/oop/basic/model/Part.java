@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Part implements Validator {
 
-	private AtomicInteger uniqueId = new AtomicInteger();
+	private static AtomicInteger uniqueId = new AtomicInteger();
 
 	private String name;
 
@@ -24,11 +24,11 @@ public class Part implements Validator {
 		this.name = name;
 		this.type = type;
 		this.price = price;
-		this.partId = uniqueId.getAndDecrement();
+		this.partId = uniqueId.getAndIncrement();
 	}
 
 	public Part() {
-		this.partId = uniqueId.getAndDecrement();
+		this.partId = uniqueId.getAndIncrement();
 	}
 
 	public String getName() {

@@ -106,4 +106,14 @@ public class PartServiceImpl implements PartService {
 	public boolean deletePartById(int id) {
 		return parts.remove(getPartById(id));
 	}
+
+	@Override
+	public boolean deletePart(Part part) {
+		return parts.remove(part);
+	}
+
+	@Override
+	public void deleteParts() {
+		parts.clear();
+	}
 }

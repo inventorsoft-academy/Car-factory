@@ -55,6 +55,10 @@ public class Part implements Validator {
 		return partId;
 	}
 
+	public void setType(PartsType type) {
+		this.type = type;
+	}
+
 	public void setPartId(int partId) {
 		this.partId = partId;
 	}

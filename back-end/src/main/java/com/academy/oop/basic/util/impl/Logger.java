@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class Logger {
 	private static final String path = "src\\main\\resources\\log\\log.txt";
-	private static final URL LOG_FILE_PATH = Logger.class.getClassLoader().getResource("log/log.txt");
+	private static final String LOG_FILE_PATH = Logger.class.getClassLoader().getResource("log/log.txt").getFile();
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";

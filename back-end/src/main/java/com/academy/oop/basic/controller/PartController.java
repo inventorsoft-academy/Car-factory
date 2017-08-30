@@ -46,9 +46,6 @@ public class PartController {
 
 	@GetMapping
 	public ResponseEntity<List<Part>> getParts() {
-		SqlManager sqlManager = new PostgresSqlManager();
-		sqlManager.createParts();
-		sqlManager.createCars();
 		if (partService.getParts() != null) {
 			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
 		}

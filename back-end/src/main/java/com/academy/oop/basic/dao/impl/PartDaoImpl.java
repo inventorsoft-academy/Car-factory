@@ -11,6 +11,10 @@ public class PartDaoImpl implements PartDao {
 
     private SqlManager manager;
 
+    public PartDaoImpl(SqlManager manager) {
+        this.manager = manager;
+    }
+
     @Override
     public List<Part> getParts() {
         return manager.getParts();
@@ -18,7 +22,7 @@ public class PartDaoImpl implements PartDao {
 
     @Override
     public Part getPartById(int id) {
-        return null;
+        return manager.getPartById(id);
     }
 
     @Override

@@ -1,6 +1,0 @@
-2017-08-30T20:46:09.044 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
-2017-08-30T20:46:09.044 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
-2017-08-30T20:46:09.044 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
-2017-08-30T20:46:41.045 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
-2017-08-30T20:46:41.045 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
-2017-08-30T20:46:41.045 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list

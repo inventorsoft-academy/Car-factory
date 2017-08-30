@@ -5,7 +5,7 @@ import com.academy.oop.basic.service.impl.CarServiceImpl;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.service.impl.PartServiceImpl;
 import com.academy.oop.basic.util.FileManager;
-import com.academy.oop.basic.util.JSONFileManagerImpl;
+import com.academy.oop.basic.util.impl.JSONFileManagerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

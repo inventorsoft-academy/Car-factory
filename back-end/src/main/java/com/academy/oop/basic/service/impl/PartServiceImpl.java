@@ -4,7 +4,7 @@ import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
-import com.academy.oop.basic.util.Logger;
+import com.academy.oop.basic.util.impl.Logger;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;

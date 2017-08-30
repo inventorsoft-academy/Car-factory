@@ -2,18 +2,18 @@ package com.academy.oop.basic.dao.impl;
 
 
 import com.academy.oop.basic.dao.PartDao;
-import com.academy.oop.basic.dao.SqlFactory;
+import com.academy.oop.basic.dao.SqlManager;
 import com.academy.oop.basic.model.Part;
 
 import java.util.List;
 
 public class PartDaoImpl implements PartDao {
 
-    private SqlFactory factory;
+    private SqlManager manager;
 
     @Override
     public List<Part> getParts() {
-        return null;
+        return manager.getParts();
     }
 
     @Override

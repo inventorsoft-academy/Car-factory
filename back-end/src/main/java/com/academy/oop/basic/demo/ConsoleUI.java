@@ -6,7 +6,7 @@ import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.FileManager;
-import com.academy.oop.basic.util.Logger;
+import com.academy.oop.basic.util.impl.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,8 @@
 package com.academy.oop.basic.controller;
 
 
+import com.academy.oop.basic.dao.SqlManager;
+import com.academy.oop.basic.dao.impl.PostgresSqlManager;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
@@ -24,6 +26,8 @@ public class PartController {
 	@Autowired
 	private PartService partService;
 
+
+
 	@PostMapping
 	public ResponseEntity<Part> createPart(@RequestBody Part part) {
 		if (partService.addPart(part)) {
@@ -42,6 +46,9 @@ public class PartController {
 
 	@GetMapping
 	public ResponseEntity<List<Part>> getParts() {
+		SqlManager sqlManager = new PostgresSqlManager();
+		sqlManager.createParts();
+		sqlManager.createCars();
 		if (partService.getParts() != null) {
 			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
 		}

@@ -1,13 +1,15 @@
-package com.academy.oop.basic.util;
+package com.academy.oop.basic.util.impl;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 
 public class Logger {
 	private static final String path = "src\\main\\resources\\log\\log.txt";
+	private static final URL LOG_FILE_PATH = Logger.class.getClassLoader().getResource("log/log.txt");
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";
@@ -17,9 +19,9 @@ public class Logger {
 	private String className;
 	private static Logger logger;
 
-	public static Logger getLogger(Class clas) {
+	public static Logger getLogger(Class className) {
 		logger = new Logger();
-		logger.setClassName(clas.getName());
+		logger.setClassName(className.getName());
 		return logger;
 	}
 
@@ -42,7 +44,7 @@ public class Logger {
 	}
 
 	private void write(String massage) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(path), true))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(String.valueOf(LOG_FILE_PATH)), true))) {
 			writer.append(massage);
 			writer.newLine();
 			writer.flush();

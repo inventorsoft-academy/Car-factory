@@ -1,13 +1,15 @@
 package com.academy.oop.basic.service.impl;
 
+import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
-import com.academy.oop.basic.util.Logger;
+import com.academy.oop.basic.util.impl.Logger;
 import javassist.NotFoundException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

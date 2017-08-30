@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class Logger {
-	private static final String path = "back-end\\src\\main\\resources\\log\\log.txt";
+	private static final String path = "src\\main\\resources\\log\\log.txt";
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";

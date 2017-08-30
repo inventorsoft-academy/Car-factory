@@ -29,7 +29,7 @@ public class FileManagerImpl implements FileManager {
 				while ((line = reader.readLine()) != null) {
 					currentLine = line.split("/");
 					parts.add(new Part(currentLine[1], PartsType.valueOf(currentLine[3]),
-							Double.parseDouble(currentLine[2]), getNextId(parts)));
+							Double.parseDouble(currentLine[2])));
 				}
 			} catch (IOException e) {
 				log.error(e.getMessage());
@@ -52,7 +52,7 @@ public class FileManagerImpl implements FileManager {
 				while ((line = reader.readLine()) != null) {
 					currentLine = line.split("/");
 					cars.add(new Car(currentLine[1], currentLine[2], Integer.parseInt(currentLine[3]),
-							currentLine[4], Double.parseDouble(currentLine[5]), getNextId(cars)));
+							currentLine[4], Double.parseDouble(currentLine[5])));
 				}
 			} catch (IOException e) {
 				log.error(e.getMessage());

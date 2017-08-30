@@ -26,4 +26,8 @@ public interface PartService {
 
 	boolean addParts(List<Part> parts);
 
+	boolean editPart(Part oldPart, Part newPart);
+
+	boolean deletePartById(int id);
+
 }

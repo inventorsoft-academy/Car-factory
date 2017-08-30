@@ -42,8 +42,7 @@ public class CarServiceImpl implements CarService {
 			}
 		}
 		price = parts.stream().map(Part::getPrice).reduce(0.0, Double::sum);
-		Car car = new Car(brand, model, LocalDateTime.now().getYear(), color, price,
-				fileManager.getNextId(getCarsList()));
+		Car car = new Car(brand, model, LocalDateTime.now().getYear(), color, price);
 		if (car.validate().isEmpty()) {
 			fileManager.loadCarList().add(car);
 			parts.forEach(partsStorage::remove);

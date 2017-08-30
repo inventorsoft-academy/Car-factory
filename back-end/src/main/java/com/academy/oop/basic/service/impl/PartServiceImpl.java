@@ -6,7 +6,6 @@ import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,6 @@ public class PartServiceImpl implements PartService {
 		this.parts = new ArrayList<>();
 	}
 
-	@Autowired
 	private FileManager fileManager;
 
 	@Override
@@ -70,12 +68,15 @@ public class PartServiceImpl implements PartService {
 	@Override
 	public List<Part> getParts() {
 		log.info("get part list");
-		return fileManager.loadPartList();
+		return parts;
 	}
 
 	@Override
 	public Part getPartById(int id) {
-		return null;
+
+		return parts.stream()
+				.filter(part -> part.getPartId() == id)
+				.findFirst().get();
 	}
 
 	@Override
@@ -85,6 +86,24 @@ public class PartServiceImpl implements PartService {
 
 	@Override
 	public boolean addParts(List<Part> parts) {
+		return this.parts.addAll(parts);
+	}
+
+	@Override
+	public boolean editPart(Part oldPart, Part newPart) {
+		for (Part part : parts) {
+			if (part.equals(oldPart)) {
+				part.setName(newPart.getName());
+				part.setPrice(newPart.getPrice());
+				part.setUsed(newPart.isUsed());
+				return true;
+			}
+		}
 		return false;
+	}
+
+	@Override
+	public boolean deletePartById(int id) {
+		return parts.remove(getPartById(id));
 	}
 }

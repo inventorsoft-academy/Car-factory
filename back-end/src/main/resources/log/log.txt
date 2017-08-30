@@ -21,3 +21,15 @@
 2017-08-30T14:47:17.516 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
 2017-08-30T15:13:08.271 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
 2017-08-30T15:13:10.009 INFO com.academy.oop.basic.service.impl.PartsStorageImpl - save a new part
+2017-08-30T15:53:47.959 INFO com.academy.oop.basic.service.impl.PartServiceImpl - update part
+2017-08-30T15:53:47.975 INFO com.academy.oop.basic.service.impl.PartServiceImpl - remove part
+2017-08-30T15:54:42.991 INFO com.academy.oop.basic.service.impl.PartServiceImpl - update part
+2017-08-30T15:54:42.991 INFO com.academy.oop.basic.service.impl.PartServiceImpl - remove part
+2017-08-30T16:15:51.780 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:16:02.471 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:17:03.316 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:24:14.884 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:24:46.081 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:25:03.851 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:25:26.311 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list
+2017-08-30T16:26:14.908 INFO com.academy.oop.basic.service.impl.PartServiceImpl - get part list

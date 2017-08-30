@@ -2,7 +2,7 @@ package com.academy.oop.basic.model.factory;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.service.FileManager;
+import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

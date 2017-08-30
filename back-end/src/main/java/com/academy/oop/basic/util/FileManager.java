@@ -1,4 +1,4 @@
-package com.academy.oop.basic.service;
+package com.academy.oop.basic.util;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;

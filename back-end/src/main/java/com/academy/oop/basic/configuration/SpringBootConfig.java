@@ -4,8 +4,8 @@ import com.academy.oop.basic.model.factory.CarFactory;
 import com.academy.oop.basic.model.factory.CarFactoryImpl;
 import com.academy.oop.basic.model.factory.PartsStorage;
 import com.academy.oop.basic.model.factory.PartsStorageImpl;
-import com.academy.oop.basic.service.FileManager;
-import com.academy.oop.basic.service.JSONFileManagerImpl;
+import com.academy.oop.basic.util.FileManager;
+import com.academy.oop.basic.util.JSONFileManagerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

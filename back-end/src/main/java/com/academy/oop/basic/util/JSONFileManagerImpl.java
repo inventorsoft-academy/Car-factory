@@ -1,8 +1,7 @@
-package com.academy.oop.basic.service;
+package com.academy.oop.basic.util;
 
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.util.Logger;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;

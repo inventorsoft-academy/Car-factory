@@ -1,4 +1,4 @@
-package com.academy.oop.basic.service;
+package com.academy.oop.basic.util;
 
 import java.util.ArrayList;
 

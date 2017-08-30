@@ -5,7 +5,7 @@ import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.model.factory.CarFactory;
 import com.academy.oop.basic.model.factory.PartsStorage;
 import com.academy.oop.basic.model.factory.PartsType;
-import com.academy.oop.basic.service.FileManager;
+import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

@@ -29,29 +29,32 @@ public class PartController {
 	private SqlManager sqlManager;
 
 	@PostMapping
-	public ResponseEntity<Part> createPart(@RequestBody Part part) {
-		if (partService.addPart(part)) {
-			sqlManager.addPart(part);
-			return new ResponseEntity<>(part, HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	public void createPart(@RequestBody Part part) {
+		sqlManager.addPart(part);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Part> getPartById(@PathVariable int id) {
-		if (partService.getPartById(id) != null) {
-			return new ResponseEntity<>(partService.getPartById(id), HttpStatus.OK);
+		if (sqlManager.getPartById(id) != null) {
+			return new ResponseEntity<>(sqlManager.getPartById(id), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping
 	public ResponseEntity<List<Part>> getParts() {
-		if (partService.getParts() != null) {
-			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
+		if (sqlManager.getParts() != null) {
+			return new ResponseEntity<>(sqlManager.getParts(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Part> deletePartById(@PathVariable int id) {
+		sqlManager.deletePartById(id);
+		return new ResponseEntity<Part>(HttpStatus.OK);
+	}
+
 
 	@GetMapping("/types")
 	public ResponseEntity<PartsType[]> getTypes() {

@@ -36,8 +36,7 @@ public interface SqlManager {
             "        ON DELETE NO ACTION" +
             ")";
 
-    String GET_PARTS = "SELECT _id, type, price, used\n" +
-                        "\tFROM public.parts;";
+    String GET_PARTS = "SELECT * FROM public.parts;";
 
     void createTableCar();
 

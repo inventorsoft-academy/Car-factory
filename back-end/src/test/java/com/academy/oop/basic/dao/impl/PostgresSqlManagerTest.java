@@ -32,19 +32,17 @@ public class PostgresSqlManagerTest {
 
     @Test
     public void getParts() throws Exception {
-
+        assertNotNull(sqlManager.getParts());
     }
 
     @Test
     public void getPartById() throws Exception {
+        Part newPart = new Part("the best", PartsType.SUSPENSION, 623.78);
+        sqlManager.addPart(newPart);
 
-//        sqlManager.createTablePart();
-//        sqlManager.createTableCar();
-        sqlManager.addPart(part);
+        sqlManager.getPartById(1);
+//        assertEquals(newPart.getPartId(), partById.getPartId());
 
-        Part partById = sqlManager.getPartById(part.getPartId());
-
-        assertEquals("not equals", part, partById);
 
     }
 

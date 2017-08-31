@@ -4,7 +4,6 @@ import com.academy.oop.basic.dao.SqlManager;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.util.impl.Logger;
-import org.postgresql.util.PGmoney;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -20,7 +19,6 @@ public class PostgresSqlManager implements SqlManager {
     }
 
     private Logger logger = Logger.getLogger(PostgresSqlManager.class);
-    private ResultSet resultSet;
 
     @Override
     public void createTableCar() {
@@ -57,7 +55,7 @@ public class PostgresSqlManager implements SqlManager {
     @Override
     public List<Part> getParts() {
 
-        List<Part> parts = null;
+        List<Part> parts = new ArrayList<>();
 
         try (Connection connection = DriverManager
                 .getConnection(
@@ -67,30 +65,7 @@ public class PostgresSqlManager implements SqlManager {
              Statement statement = connection.createStatement()) {
             Class.forName(JDBC_DRIVER_NAME);
 
-            statement.executeQuery(GET_PARTS);
-
-            List<List<Object>> result = new ArrayList<>();
-
-            int columnCount = resultSet.getMetaData().getColumnCount();
-
-            List<Object> headers = new ArrayList<>();
-            for (int index = 1; index <= columnCount; index++) {
-                headers.add(resultSet.getMetaData().getColumnName(index));
-            }
-            result.add(headers);
-
-            while (resultSet.next()) {
-                List<Object> row = new ArrayList<>();
-                for (int index = 1; index <= columnCount; index++) {
-                    row.add(resultSet.getObject(index));
-                }
-                result.add(row);
-            }
-
-            result.forEach(row -> {
-                row.forEach(value -> System.out.print(value + "         "));
-                System.out.println();
-            });
+            ResultSet resultSet = statement.executeQuery(GET_PARTS);
 
             parts = new ArrayList<>();
 
@@ -102,7 +77,6 @@ public class PostgresSqlManager implements SqlManager {
                 part.setUsed((Boolean) resultSet.getObject(4));
                 parts.add(part);
             }
-            parts.forEach(System.out::println);
 
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());
@@ -112,7 +86,6 @@ public class PostgresSqlManager implements SqlManager {
 
     @Override
     public Part getPartById(int id) {
-        Part part = null;
         try (Connection connection = DriverManager
                 .getConnection(
                         URL_PATH,
@@ -121,26 +94,35 @@ public class PostgresSqlManager implements SqlManager {
              Statement statement = connection.createStatement()) {
             Class.forName(JDBC_DRIVER_NAME);
 
-            resultSet = statement.executeQuery("SELECT _id, type, price, used FROM public.parts WHERE _id = " + id + ";");
 
-            Object partId = resultSet.getObject(1);
-            Object name = resultSet.getObject(2);
-            Object type = resultSet.getObject(3);
-            Object price = resultSet.getObject(4);
-            Object isUsed = resultSet.getObject(5);
 
-            part = new Part();
-            part.setPartId((Integer) partId);
-            part.setName((String) name);
-            part.setType((PartsType) type);
-            part.setPrice((Double) price);
-            part.setUsed((Boolean) isUsed);
+            ResultSet resultSet = statement.executeQuery("SELECT _id, type, price, used FROM public.parts WHERE _id = " + id + ";");
+
+            System.out.println(resultSet.getMetaData().getColumnCount());
+
+
+
+            if(resultSet.first()) {
+                int partId = resultSet.getInt("_id");
+                String name = resultSet.getString("name");
+                String type = resultSet.getString("type");
+                double price = resultSet.getDouble("price");
+                boolean used = resultSet.getBoolean("used");
+                Part part = new Part();
+                part.setPartId( partId);
+                part.setName( name);
+                part.setType( Enum.valueOf(PartsType.class, type));
+                part.setPrice( price);
+                part.setUsed( used);
+                return part;
+            }
+
+
 
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());
         }
-        return part;
-
+        return null;
     }
 
     @Override

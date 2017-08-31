@@ -1,5 +1,6 @@
 package com.academy.oop.basic.service.impl;
 
+import com.academy.oop.basic.dao.SqlManager;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 public class PartServiceImpl implements PartService {
 
 	private static final Logger log = Logger.getLogger(PartServiceImpl.class);
+
+	private SqlManager sqlManager;
 
 	private List<Part> parts;
 
@@ -68,12 +71,12 @@ public class PartServiceImpl implements PartService {
 	@Override
 	public List<Part> getParts() {
 		log.info("get part list");
-		return parts;
+		return sqlManager.getParts();
+//		return parts;
 	}
 
 	@Override
 	public Part getPartById(int id) {
-
 		return parts.stream()
 				.filter(part -> part.getPartId() == id)
 				.findFirst().get();
@@ -81,6 +84,7 @@ public class PartServiceImpl implements PartService {
 
 	@Override
 	public boolean addPart(Part part) {
+		sqlManager.addPart(part);
 		return parts.add(part);
 	}
 

@@ -90,27 +90,28 @@ public class PostgresSqlManager implements SqlManager {
                 .getConnection(
                         URL_PATH,
                         USER_NAME,
-                        DB_PASSWORD);
-             Statement statement = connection.createStatement()) {
+                        DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
 
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM parts WHERE _id = ?;");
 
 
-            ResultSet resultSet = statement.executeQuery("SELECT _id, type, price, used FROM public.parts WHERE _id = " + id + ";");
+            statement.setInt(id, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
 
             System.out.println(resultSet.getMetaData().getColumnCount());
 
 
 
-            if(resultSet.first()) {
+            while (resultSet.next()) {
                 int partId = resultSet.getInt("_id");
-                String name = resultSet.getString("name");
                 String type = resultSet.getString("type");
                 double price = resultSet.getDouble("price");
                 boolean used = resultSet.getBoolean("used");
                 Part part = new Part();
                 part.setPartId( partId);
-                part.setName( name);
                 part.setType( Enum.valueOf(PartsType.class, type));
                 part.setPrice( price);
                 part.setUsed( used);

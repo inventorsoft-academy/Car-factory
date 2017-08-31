@@ -40,7 +40,8 @@ public class PostgresSqlManagerTest {
         Part newPart = new Part("the best", PartsType.SUSPENSION, 623.78);
         sqlManager.addPart(newPart);
 
-        sqlManager.getPartById(1);
+        Part partById = sqlManager.getPartById(1);
+
 //        assertEquals(newPart.getPartId(), partById.getPartId());
 
 

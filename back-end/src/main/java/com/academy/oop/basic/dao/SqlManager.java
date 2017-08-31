@@ -17,7 +17,7 @@ public interface SqlManager {
             "(\n" +
             "    _id serial NOT NULL,\n" +
             "    type text NOT NULL,\n" +
-            "    price money NOT NULL,\n" +
+            "    price double precision NOT NULL,\n" +
             "    used boolean NOT NULL DEFAULT false,\n" +
             "    PRIMARY KEY (_id)\n" +
             ")";
@@ -28,7 +28,8 @@ public interface SqlManager {
             "    brand text NOT NULL,\n" +
             "    model text NOT NULL,\n" +
             "    color text,\n" +
-            "CONSTRAINT cars_pkey PRIMARY KEY (_id),\n" +
+            "    price double precision,\n" +
+            "    CONSTRAINT cars_pkey PRIMARY KEY (_id),\n" +
             "    CONSTRAINT part_id FOREIGN KEY (_id)\n" +
             "        REFERENCES public.parts (_id) MATCH SIMPLE\n" +
             "        ON UPDATE NO ACTION\n" +

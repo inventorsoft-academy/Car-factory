@@ -25,12 +25,13 @@ public class PartController {
 
 	@Autowired
 	private PartService partService;
-
-
+	@Autowired
+	private SqlManager sqlManager;
 
 	@PostMapping
 	public ResponseEntity<Part> createPart(@RequestBody Part part) {
 		if (partService.addPart(part)) {
+			sqlManager.addPart(part);
 			return new ResponseEntity<>(part, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,6 +47,9 @@ public class PartController {
 
 	@GetMapping
 	public ResponseEntity<List<Part>> getParts() {
+		sqlManager = new PostgresSqlManager();
+		sqlManager.createTablePart();
+		sqlManager.createTableCar();
 		if (partService.getParts() != null) {
 			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
 		}

@@ -2,6 +2,7 @@ package com.academy.oop.basic.model;
 
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Validator;
+import org.postgresql.util.PGmoney;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -77,9 +78,6 @@ public class Part implements Validator {
 		ArrayList<String> valid = new ArrayList<>();
 		if (name == null || name.length() < 3 || name.length() > 30) {
 			valid.add("name");
-		}
-		if (price < 0 || price > 100000000) {
-			valid.add("price");
 		}
 		return valid;
 	}

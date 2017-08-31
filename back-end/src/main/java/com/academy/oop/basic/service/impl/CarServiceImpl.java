@@ -8,6 +8,7 @@ import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.impl.Logger;
 import javassist.NotFoundException;
+import org.postgresql.util.PGmoney;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -89,7 +90,9 @@ public class CarServiceImpl implements CarService {
 
     private Car countPrice(Car car) {
         List<Part> serviceParts = partService.getParts();
+
         Double carPrice = 0.0;
+
         List<Part> carParts = car.getParts();
         for (Part carPart : carParts) {
             for (Part servicePart : serviceParts) {

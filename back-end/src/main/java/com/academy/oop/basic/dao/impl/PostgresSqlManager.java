@@ -3,14 +3,21 @@ package com.academy.oop.basic.dao.impl;
 import com.academy.oop.basic.dao.SqlManager;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.impl.Logger;
+import org.postgresql.util.PGmoney;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PostgresSqlManager implements SqlManager {
+
+    public PostgresSqlManager() {
+        createTablePart();
+        createTableCar();
+    }
 
     private Logger logger = Logger.getLogger(PostgresSqlManager.class);
     private ResultSet resultSet;
@@ -139,24 +146,21 @@ public class PostgresSqlManager implements SqlManager {
     @Override
     public void addPart(Part part) {
         try (Connection connection = DriverManager
-                .getConnection(
-                        URL_PATH,
-                        USER_NAME,
-                        DB_PASSWORD);
-             Statement statement = connection.createStatement()) {
+                .getConnection(URL_PATH, USER_NAME, DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
 
+            String s = "INSERT INTO public.parts(type, price, used) VALUES (?, ?, ?);";
 
-            String insert = "INSERT INTO public.parts(\n" +
-                    "_id, type, price, used)\n" +
-                    "\tVALUES (" +
-                    part.getPartId() +
-                    part.getType() +
-                    part.getPrice() +
-                    part.isUsed() +
-                    ");";
+            PreparedStatement statement = connection.prepareStatement(s);
 
-            statement.executeQuery(insert);
+            String someType = String.valueOf(part.getType());
+            Double price = part.getPrice();
+            boolean used = part.isUsed();
+            statement.setString(1,someType);
+            statement.setDouble(2, price);
+            statement.setBoolean(3, used);
+
+            statement.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());

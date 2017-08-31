@@ -2,6 +2,8 @@ package com.academy.oop.basic.model;
 
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Validator;
+import org.codehaus.groovy.antlr.SourceBuffer;
+import org.postgresql.util.PGmoney;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class Car implements Validator {
 		this.price = 0.0;
 		this.carId = uniqueId.getAndIncrement();
 		this.parts = Arrays.asList(
-				new Part("default engine", PartsType.ENGINE, 1.0),
+				new Part("default engine", PartsType.ENGINE, 1.2),
 				new Part("default suspension", PartsType.SUSPENSION, 1.0),
 				new Part("default steering", PartsType.STEERING, 1.0)
 		);
@@ -116,9 +118,6 @@ public class Car implements Validator {
 		}
 		if (color == null || color.length() < 3 || color.length() > 30) {
 			valid.add("color");
-		}
-		if (price < 0 || price > 100000000) {
-			valid.add("price");
 		}
 		return valid;
 	}

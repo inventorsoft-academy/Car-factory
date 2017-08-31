@@ -96,14 +96,9 @@ public class PostgresSqlManager implements SqlManager {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM parts WHERE _id = ?;");
 
 
-            statement.setInt(id, id);
+            statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
-
-
-            System.out.println(resultSet.getMetaData().getColumnCount());
-
-
 
             while (resultSet.next()) {
                 int partId = resultSet.getInt("_id");
@@ -181,13 +176,17 @@ public class PostgresSqlManager implements SqlManager {
                 .getConnection(
                         URL_PATH,
                         USER_NAME,
-                        DB_PASSWORD);
-             Statement statement = connection.createStatement()) {
+                        DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
 
-            String delete = "DELETE FROM public.parts WHERE _id=" + id + ";";
 
-            statement.executeQuery(delete);
+
+            String delete = "DELETE FROM public.parts WHERE _id = ?;";
+            PreparedStatement statement = connection.prepareStatement(delete);
+
+            statement.setInt(1, id);
+
+            statement.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());

@@ -39,12 +39,6 @@ public class PostgresSqlManagerTest {
     public void getPartById() throws Exception {
         Part newPart = new Part("the best", PartsType.SUSPENSION, 623.78);
         sqlManager.addPart(newPart);
-
-        Part partById = sqlManager.getPartById(1);
-
-//        assertEquals(newPart.getPartId(), partById.getPartId());
-
-
     }
 
     @Test
@@ -53,6 +47,7 @@ public class PostgresSqlManagerTest {
 
     @Test
     public void deletePartById() throws Exception {
+        sqlManager.deletePartById(4);
     }
 
 }

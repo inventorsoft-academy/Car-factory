@@ -16,7 +16,7 @@ public class PostgresSqlManagerTest {
     @Before
     public void setUp() throws Exception {
         sqlManager = new PostgresSqlManager();
-        part = new Part("name1", PartsType.ENGINE, 123.123);
+        part = new Part(PartsType.ENGINE, 123.123, false);
     }
 
     @Test
@@ -37,12 +37,18 @@ public class PostgresSqlManagerTest {
 
     @Test
     public void getPartById() throws Exception {
-        Part newPart = new Part("the best", PartsType.SUSPENSION, 623.78);
+        Part newPart = new Part(PartsType.SUSPENSION, 623.78, false);
         sqlManager.addPart(newPart);
     }
 
     @Test
     public void updatePart() throws Exception {
+        Part part = new Part(PartsType.SUSPENSION, 132.44, false);
+
+        sqlManager.addPart(part);
+        Part partToUpdate = new Part(PartsType.STEERING, 444.55, true);
+
+        sqlManager.updatePart(part.getPartId(), partToUpdate);
 
     }
 

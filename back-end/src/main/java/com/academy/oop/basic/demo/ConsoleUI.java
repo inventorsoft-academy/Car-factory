@@ -93,7 +93,7 @@ public class ConsoleUI implements CommandLineRunner {
 		}
 		if (flag) {
 			try {
-				partsStorage.save(new Part(partName, partsType, price));
+//				partsStorage.save(new Part(partName, partsType, price));
 				System.out.println("Successfully");
 			} catch (Exception e) {
 				System.out.println("Fields: " + e.getMessage() + " not valid! Please try again!");
@@ -130,7 +130,7 @@ public class ConsoleUI implements CommandLineRunner {
 
 	private void showPartList() {
 		partsStorage.getParts().stream().forEach(part -> System.out.println(part.getPartId() + 1
-				+ " - Name: " + part.getName() + ", Type: " + part.getType().toString().toLowerCase()
+//				+ " - Name: " + part.getName() + ", Type: " + part.getType().toString().toLowerCase()
 				+ ", Price: " + part.getPrice() + ";"));
 	}
 

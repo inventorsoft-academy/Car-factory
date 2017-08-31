@@ -97,7 +97,7 @@ public class PartServiceImpl implements PartService {
 	public boolean editPart(Part oldPart, Part newPart) {
 		for (Part part : parts) {
 			if (part.equals(oldPart)) {
-				part.setName(newPart.getName());
+				part.setType(newPart.getType());
 				part.setPrice(newPart.getPrice());
 				part.setUsed(newPart.isUsed());
 				return true;

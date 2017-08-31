@@ -67,13 +67,11 @@ public class PostgresSqlManager implements SqlManager {
 
             ResultSet resultSet = statement.executeQuery(GET_PARTS);
 
-            parts = new ArrayList<>();
-
             while (resultSet.next()) {
                 Part part = new Part();
                 part.setPartId((Integer) resultSet.getObject(1));
-                part.setName((String) resultSet.getObject(2));
-                part.setPrice((Double) resultSet.getObject("price"));
+                part.setType(Enum.valueOf(PartsType.class, (String) resultSet.getObject(2)) );
+                part.setPrice((Double) resultSet.getObject(3));
                 part.setUsed((Boolean) resultSet.getObject(4));
                 parts.add(part);
             }
@@ -94,7 +92,6 @@ public class PostgresSqlManager implements SqlManager {
             Class.forName(JDBC_DRIVER_NAME);
 
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM parts WHERE _id = ?;");
-
 
             statement.setInt(1, id);
 
@@ -146,7 +143,7 @@ public class PostgresSqlManager implements SqlManager {
     }
 
     @Override
-    public void updatePart(int partId,Part part) {
+    public boolean updatePart(int partId, Part part) {
         try (Connection connection = DriverManager
                 .getConnection(
                         URL_PATH,
@@ -159,19 +156,22 @@ public class PostgresSqlManager implements SqlManager {
 
             PreparedStatement statement = connection.prepareStatement(update);
 
+            statement.setInt(5, partId);
             statement.setInt(1, partId);
             statement.setString(2, String.valueOf(PartsType.STEERING));
             statement.setDouble(3, part.getPrice());
             statement.setBoolean(4, part.isUsed());
-            statement.execute();
 
+            statement.execute();
+            return true;
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());
+            throw new RuntimeException();
         }
     }
 
     @Override
-    public void deletePartById(int id) {
+    public boolean deletePartById(int id) {
         try (Connection connection = DriverManager
                 .getConnection(
                         URL_PATH,
@@ -187,10 +187,11 @@ public class PostgresSqlManager implements SqlManager {
             statement.setInt(1, id);
 
             statement.execute();
-
+            return true;
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());
         }
+        return false;
     }
 }
 

@@ -47,7 +47,7 @@ public interface SqlManager {
 
     void addPart(Part part);
 
-    void updatePart(int partId, Part part);
+    boolean updatePart(int partId, Part part);
 
-    void deletePartById(int id);
+    boolean deletePartById(int id);
 }

@@ -29,8 +29,8 @@ public class FileManagerImpl implements FileManager {
 				String[] currentLine;
 				while ((line = reader.readLine()) != null) {
 					currentLine = line.split("/");
-					parts.add(new Part(currentLine[1], PartsType.valueOf(currentLine[3]),
-							Double.parseDouble(currentLine[2])));
+//					parts.add(new Part(currentLine[1], PartsType.valueOf(currentLine[3]),
+//							Double.parseDouble(currentLine[2])));
 				}
 			} catch (IOException e) {
 				log.error(e.getMessage());
@@ -98,7 +98,7 @@ public class FileManagerImpl implements FileManager {
 			for (Part part : parts) {
 				String builder = String.valueOf(part.getPartId()) +
 						"/" +
-						part.getName() +
+//						part.getName() +
 						"/" +
 						part.getPrice() +
 						"/" +

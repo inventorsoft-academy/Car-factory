@@ -49,10 +49,20 @@ public class PartController {
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<Part> updatePart(@PathVariable int id, @RequestBody Part part) {
+		if (sqlManager.updatePart(id, part)) {
+			return new ResponseEntity<>(part, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Part> deletePartById(@PathVariable int id) {
-		sqlManager.deletePartById(id);
-		return new ResponseEntity<Part>(HttpStatus.OK);
+	public ResponseEntity<Boolean> deletePartById(@PathVariable int id) {
+		if (sqlManager.deletePartById(id)) {
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Boolean>(HttpStatus.NOT_FOUND);
 	}
 
 

@@ -21,8 +21,8 @@ public class PartServiceTest {
     @Before
     public void setUp() throws Exception {
         partService = new PartServiceImpl();
-        oldGlobalPart = new Part("old details", PartsType.STEERING, 95548.2);
-        newGlobalPart = new Part("new detail", PartsType.ENGINE, 123.55);
+        oldGlobalPart = new Part(PartsType.STEERING, 95548.2, false);
+        newGlobalPart = new Part(PartsType.ENGINE, 123.55, false);
     }
 
     @Test
@@ -51,10 +51,10 @@ public class PartServiceTest {
     @Test
     public void getParts() throws Exception {
         List<Part> parts = Arrays.asList(
-                new Part("part 1", PartsType.STEERING, 23.2),
-                new Part("part 2", PartsType.STEERING, 23.2),
-                new Part("part 3", PartsType.STEERING, 23.2),
-                new Part("part 4", PartsType.STEERING, 23.2)
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false)
         );
         partService.addParts(parts);
 
@@ -64,10 +64,10 @@ public class PartServiceTest {
     @Test
     public void addParts() throws Exception {
         List<Part> parts = Arrays.asList(
-                new Part("part 1", PartsType.STEERING, 23.2),
-                new Part("part 2", PartsType.STEERING, 23.2),
-                new Part("part 3", PartsType.STEERING, 23.2),
-                new Part("part 4", PartsType.STEERING, 23.2)
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false),
+                new Part(PartsType.STEERING, 23.2, false)
         );
         partService.addParts(parts);
 

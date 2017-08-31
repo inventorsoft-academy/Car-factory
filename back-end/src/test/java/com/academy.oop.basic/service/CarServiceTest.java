@@ -29,11 +29,11 @@ public class CarServiceTest {
     public void createCar() throws Exception {
 
         List<Part> firstParts = Arrays.asList(
-                new Part("1", PartsType.STEERING, 1.0),
-                new Part("3", PartsType.ENGINE, 2.0),
-                new Part("3", PartsType.ENGINE, 2.0),
-//                new Part("3", PartsType.SUSPENSION, 2.0),
-                new Part("3", PartsType.ENGINE, 2.0)
+                new Part(PartsType.STEERING, 1.0,false),
+                new Part(PartsType.STEERING, 1.0,false),
+                new Part(PartsType.STEERING, 1.0,false),
+                new Part(PartsType.STEERING, 1.0,false),
+                new Part(PartsType.STEERING, 1.0,false)
         );
 
         partService.addParts(firstParts);

@@ -33,9 +33,9 @@ public class Car implements Validator {
 		this.carId = uniqueId.getAndIncrement();
 		this.createdDate = LocalDate.now();
 		this.parts = Arrays.asList(
-				new Part("default engine", PartsType.ENGINE, 1.0),
-				new Part("default suspension", PartsType.SUSPENSION, 1.0),
-				new Part("default steering", PartsType.STEERING, 1.0)
+				new Part(PartsType.ENGINE, 1.0, false),
+				new Part(PartsType.SUSPENSION, 1.0, false),
+				new Part(PartsType.STEERING, 1.0, false)
 		);
 	}
 
@@ -47,9 +47,9 @@ public class Car implements Validator {
 		this.price = 0.0;
 		this.carId = uniqueId.getAndIncrement();
 		this.parts = Arrays.asList(
-				new Part("default engine", PartsType.ENGINE, 1.2),
-				new Part("default suspension", PartsType.SUSPENSION, 1.0),
-				new Part("default steering", PartsType.STEERING, 1.0)
+				new Part(PartsType.ENGINE, 1.2, false),
+				new Part(PartsType.SUSPENSION, 1.0, false),
+				new Part(PartsType.STEERING, 1.0, false)
 		);
 
 	}

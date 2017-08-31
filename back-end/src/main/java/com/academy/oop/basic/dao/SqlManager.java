@@ -3,7 +3,6 @@ package com.academy.oop.basic.dao;
 
 import com.academy.oop.basic.model.Part;
 
-import java.net.URL;
 import java.util.List;
 
 public interface SqlManager {
@@ -48,7 +47,7 @@ public interface SqlManager {
 
     void addPart(Part part);
 
-    void updatePart(Part part);
+    void updatePart(int partId, Part part);
 
     void deletePartById(int id);
 }

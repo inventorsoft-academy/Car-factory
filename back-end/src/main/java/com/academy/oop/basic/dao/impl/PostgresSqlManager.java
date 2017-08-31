@@ -146,24 +146,24 @@ public class PostgresSqlManager implements SqlManager {
     }
 
     @Override
-    public void updatePart(Part part) {
+    public void updatePart(int partId,Part part) {
         try (Connection connection = DriverManager
                 .getConnection(
                         URL_PATH,
                         USER_NAME,
-                        DB_PASSWORD);
-             Statement statement = connection.createStatement()) {
+                        DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
 
-            String update = "UPDATE public.parts " +
-                    "SET " +
-                    "_id=" + part.getPartId() + "," +
-                    " type=" + part.getType() + "," +
-                    " price=" + part.getPrice() + "," +
-                    " used=" + part.isUsed() +
-                    " WHERE _id == " + part.getPartId() + ";";
+            String update = "UPDATE public.parts SET _id=?, type=?, price=?, used=? WHERE _id = ?;";
 
-            statement.executeQuery(update);
+
+            PreparedStatement statement = connection.prepareStatement(update);
+
+            statement.setInt(1, partId);
+            statement.setString(2, String.valueOf(PartsType.STEERING));
+            statement.setDouble(3, part.getPrice());
+            statement.setBoolean(4, part.isUsed());
+            statement.execute();
 
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());

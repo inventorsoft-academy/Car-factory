@@ -43,6 +43,7 @@ public class PostgresSqlManagerTest {
 
     @Test
     public void updatePart() throws Exception {
+
     }
 
     @Test

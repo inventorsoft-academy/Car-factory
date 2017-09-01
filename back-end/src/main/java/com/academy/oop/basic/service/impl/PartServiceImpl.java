@@ -31,6 +31,14 @@ public class PartServiceImpl implements PartService {
 	}
 
 	@Override
+	public boolean addParts(List<Part> parts) throws SQLException, ClassNotFoundException {
+		for (Part part: parts) {
+			partDao.addPart(part);
+		}
+		return true;
+	}
+
+	@Override
 	public boolean deletePartById(int id) {
 		return partDao.deletePartById(id);
 	}
@@ -39,4 +47,5 @@ public class PartServiceImpl implements PartService {
 	public boolean updatePart(int id, Part part) {
 		return partDao.updatePart(id, part);
 	}
+
 }

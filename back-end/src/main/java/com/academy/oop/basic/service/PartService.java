@@ -13,6 +13,8 @@ public interface PartService {
 
 	boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 
+	boolean addParts(List<Part> parts) throws SQLException, ClassNotFoundException;
+
 	boolean deletePartById(int id);
 
     boolean updatePart(int id, Part part);

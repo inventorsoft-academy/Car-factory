@@ -1,10 +1,13 @@
 package com.academy.oop.basic.service;
 
+import com.academy.oop.basic.dao.PartDao;
+import com.academy.oop.basic.dao.impl.PartDaoImpl;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.impl.PartServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,32 +23,19 @@ public class PartServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        partService = new PartServiceImpl();
         oldGlobalPart = new Part(PartsType.STEERING, 95548.2, false);
         newGlobalPart = new Part(PartsType.ENGINE, 123.55, false);
     }
 
     @Test
     public void addPart() throws Exception {
-        assertTrue("Part not added", partService.addPart(oldGlobalPart));
+        Part part = new Part(PartsType.ENGINE, 88888.11, false);
     }
 
     @Test
     public void getPartById() throws Exception {
         addPart();
         assertEquals("Parts not equals", oldGlobalPart, partService.getPartById(oldGlobalPart.getPartId()));
-    }
-
-    @Test
-    public void editPart() throws Exception {
-        partService.addPart(oldGlobalPart);
-        assertTrue("part not update", partService.editPart(oldGlobalPart, newGlobalPart));
-    }
-
-    @Test
-    public void deletePartById() {
-        partService.addPart(oldGlobalPart);
-        assertTrue("Part not deleted",partService.deletePartById(oldGlobalPart.getPartId()));
     }
 
     @Test

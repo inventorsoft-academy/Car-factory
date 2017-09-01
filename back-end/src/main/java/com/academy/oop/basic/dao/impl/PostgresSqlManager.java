@@ -179,8 +179,6 @@ public class PostgresSqlManager implements SqlManager {
                         DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
 
-
-
             String delete = "DELETE FROM public.parts WHERE _id = ?;";
             PreparedStatement statement = connection.prepareStatement(delete);
 

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,8 @@ public class PartController {
 	private SqlManager sqlManager;
 
 	@PostMapping
-	public void createPart(@RequestBody Part part) {
-		sqlManager.addPart(part);
+	public void createPart(@RequestBody Part part) throws SQLException, ClassNotFoundException {
+		partService.addPart(part);
 	}
 
 	@GetMapping("/{id}")

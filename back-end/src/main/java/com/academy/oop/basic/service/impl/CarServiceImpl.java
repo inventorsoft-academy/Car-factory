@@ -9,15 +9,21 @@ import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.impl.Logger;
 import javassist.NotFoundException;
 import org.postgresql.util.PGmoney;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Service
 public class CarServiceImpl implements CarService {
 
     private static final Logger log = Logger.getLogger(CarServiceImpl.class);
+
+    public CarServiceImpl() {
+    }
 
     private FileManager fileManager;
     private PartService partService;
@@ -57,7 +63,6 @@ public class CarServiceImpl implements CarService {
 
     private void deleteUsedParts() {
         List<Part> tempParts = partService.getParts().stream().filter(p -> !p.isUsed()).collect(Collectors.toList());
-        partService.deleteParts();
         partService.addParts(tempParts);
     }
 

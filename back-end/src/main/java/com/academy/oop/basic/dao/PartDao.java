@@ -2,6 +2,7 @@ package com.academy.oop.basic.dao;
 
 import com.academy.oop.basic.model.Part;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface PartDao {
@@ -10,7 +11,7 @@ public interface PartDao {
 
     Part getPartById(int id);
 
-    boolean addPart(Part part);
+    boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 
     boolean deletePartById(int id);
 

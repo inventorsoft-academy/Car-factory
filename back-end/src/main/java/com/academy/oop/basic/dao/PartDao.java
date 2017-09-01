@@ -13,6 +13,8 @@ public interface PartDao {
 
     boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 
+    boolean updatePart(int partId, Part part);
+
     boolean deletePartById(int id);
 
 }

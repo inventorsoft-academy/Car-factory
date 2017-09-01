@@ -22,32 +22,21 @@ public class PartServiceImpl implements PartService {
 
 	@Override
 	public Part getPartById(int id) {
-		return null;
+		return partDao.getPartById(id);
 	}
 
 	@Override
 	public boolean addPart(Part part) throws SQLException, ClassNotFoundException {
-		partDao.addPart(part);
-		return true;
-	}
-
-	@Override
-	public boolean addParts(List<Part> parts) {
-		return false;
-	}
-
-	@Override
-	public boolean editPart(int id, Part newPart) {
-		return false;
+		return partDao.addPart(part);
 	}
 
 	@Override
 	public boolean deletePartById(int id) {
-		return false;
+		return partDao.deletePartById(id);
 	}
 
 	@Override
 	public boolean updatePart(int id, Part part) {
-		return false;
+		return partDao.updatePart(id, part);
 	}
 }

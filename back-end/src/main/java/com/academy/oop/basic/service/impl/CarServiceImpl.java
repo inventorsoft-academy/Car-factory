@@ -1,6 +1,5 @@
 package com.academy.oop.basic.service.impl;
 
-import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.CarService;
@@ -8,10 +7,9 @@ import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.impl.Logger;
 import javassist.NotFoundException;
-import org.postgresql.util.PGmoney;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,7 +61,15 @@ public class CarServiceImpl implements CarService {
 
     private void deleteUsedParts() {
         List<Part> tempParts = partService.getParts().stream().filter(p -> !p.isUsed()).collect(Collectors.toList());
-        partService.addParts(tempParts);
+        try {
+            partService.addParts(tempParts);
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException("Sql exception");
+        } catch (ClassNotFoundException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException("Class not found");
+        }
     }
 
     @Override

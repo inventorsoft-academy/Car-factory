@@ -1,20 +1,13 @@
 package com.academy.oop.basic.service.impl;
 
-import com.academy.oop.basic.configuration.CustomConnection;
 import com.academy.oop.basic.dao.PartDao;
-import com.academy.oop.basic.dao.SqlManager;
-import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
-import com.academy.oop.basic.util.FileManager;
-import com.academy.oop.basic.util.impl.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PartServiceImpl implements PartService {
@@ -50,6 +43,11 @@ public class PartServiceImpl implements PartService {
 
 	@Override
 	public boolean deletePartById(int id) {
+		return false;
+	}
+
+	@Override
+	public boolean updatePart(int id, Part part) {
 		return false;
 	}
 }

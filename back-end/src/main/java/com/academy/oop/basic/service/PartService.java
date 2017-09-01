@@ -1,7 +1,6 @@
 package com.academy.oop.basic.service;
 
 import com.academy.oop.basic.model.Part;
-import com.academy.oop.basic.enums.PartsType;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -20,4 +19,5 @@ public interface PartService {
 
 	boolean deletePartById(int id);
 
+    boolean updatePart(int id, Part part);
 }

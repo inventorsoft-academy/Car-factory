@@ -5,7 +5,7 @@ import java.util.*;
 
 public class CustomArrayList<T> extends ArrayList<T> {
 
-	private static final int DEFAULT_CAPACITY = 5;
+	private static final int DEFAULT_INITIAL_CAPACITY = 5;
 
 	private static final Object[] EMPTY_ELEMENT_DATA = {};
 
@@ -14,7 +14,6 @@ public class CustomArrayList<T> extends ArrayList<T> {
 	private transient Object[] customArrayListElementData;
 
 	public CustomArrayList(int initialCapacity){
-		super();
 		if (initialCapacity < 0)
 		throw new IllegalArgumentException("Illegal Capacity: "+
 				initialCapacity);
@@ -22,7 +21,6 @@ public class CustomArrayList<T> extends ArrayList<T> {
 	}
 
 	public CustomArrayList(){
-		super();
 		this.customArrayListElementData = EMPTY_ELEMENT_DATA;
 	}
 
@@ -47,6 +45,22 @@ public class CustomArrayList<T> extends ArrayList<T> {
 		}
 		return (T)customArrayListElementData[index];
 	}
+
+    public void ensureCapacity(int minCapacity) {
+        if (customArrayListElementData == EMPTY_ELEMENT_DATA) {
+            minCapacity = Math.max(DEFAULT_INITIAL_CAPACITY, minCapacity);
+        }
+        if (minCapacity - customArrayListElementData.length > 0)
+            growCustomArrayList(minCapacity);
+    }
+
+    private void growCustomArrayList(int minCapacity) {
+        int oldCapacity = customArrayListElementData.length;
+        int newCapacity = oldCapacity + (oldCapacity /2);
+        if (newCapacity - minCapacity < 0)
+            newCapacity = minCapacity;
+        customArrayListElementData = Arrays.copyOf(customArrayListElementData, newCapacity);
+    }
 
 
 

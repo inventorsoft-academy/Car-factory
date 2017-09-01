@@ -1,9 +1,12 @@
-CREATE TABLE cars (
-  car_id       SERIAL      NOT NULL,
-  brand        VARCHAR(45) NOT NULL,
-  model        VARCHAR(45) NOT NULL,
-  created_date DECIMAL     NOT NULL,
-  color        VARCHAR(45) NOT NULL,
-  price        FLOAT       NOT NULL,
-  PRIMARY KEY (car_id)
+CREATE TABLE IF NOT EXISTS cars (
+  id    SERIAL NOT NULL,
+  brand TEXT   NOT NULL,
+  model TEXT   NOT NULL,
+  color TEXT,
+  price DOUBLE PRECISION,
+  CONSTRAINT cars_pkey PRIMARY KEY (id),
+  CONSTRAINT part_id FOREIGN KEY (id)
+  REFERENCES parts (id) MATCH SIMPLE
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
 );

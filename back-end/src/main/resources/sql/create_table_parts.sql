@@ -1,11 +1,7 @@
-CREATE TABLE parts (
-  part_id SERIAL      NOT NULL,
-  name    VARCHAR(45) NOT NULL,
-  type    VARCHAR(45) NOT NULL,
-  price   FLOAT       NOT NULL,
-  used    BOOLEAN     NOT NULL DEFAULT FALSE,
-  car_id  INT,
-  PRIMARY KEY (part_id),
-  FOREIGN KEY (car_id)
-  REFERENCES Cars (car_id)
-);
+CREATE TABLE IF NOT EXISTS parts (
+  id    SERIAL           NOT NULL,
+  type  TEXT             NOT NULL,
+  price DOUBLE PRECISION NOT NULL,
+  used  BOOLEAN          NOT NULL DEFAULT FALSE,
+  PRIMARY KEY (id)
+)

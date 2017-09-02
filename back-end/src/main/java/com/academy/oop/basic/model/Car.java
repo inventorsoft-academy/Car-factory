@@ -2,8 +2,6 @@ package com.academy.oop.basic.model;
 
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.util.Validator;
-import org.codehaus.groovy.antlr.SourceBuffer;
-import org.postgresql.util.PGmoney;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

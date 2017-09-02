@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class CarController {
     private CarService carService;
 
     @PostMapping
-    public ResponseEntity<Car> createCar(@RequestBody Car car) {
+    public ResponseEntity<Car> createCar(@RequestBody Car car) throws SQLException {
        if (carService.createCar(car)) {
            return new ResponseEntity<>(car, HttpStatus.CREATED);
        }

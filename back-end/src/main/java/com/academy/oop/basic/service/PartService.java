@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface PartService {
 
-	List<Part> getParts();
+	List<Part> getParts() throws SQLException;
 
-	Part getPartById(int id);
+	Part getPartById(int id) throws SQLException;
 
 	boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 
 	boolean addParts(List<Part> parts) throws SQLException, ClassNotFoundException;
 
-	boolean deletePartById(int id);
+	boolean deletePartById(int id) throws SQLException;
 
-    boolean updatePart(int id, Part part);
+    boolean updatePart(int id, Part part) throws SQLException;
 }

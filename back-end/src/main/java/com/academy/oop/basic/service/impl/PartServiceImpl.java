@@ -16,12 +16,12 @@ public class PartServiceImpl implements PartService {
 	private PartDao partDao;
 
 	@Override
-	public List<Part> getParts() {
+	public List<Part> getParts() throws SQLException {
 		return partDao.getParts();
 	}
 
 	@Override
-	public Part getPartById(int id) {
+	public Part getPartById(int id) throws SQLException {
 		return partDao.getPartById(id);
 	}
 
@@ -39,12 +39,12 @@ public class PartServiceImpl implements PartService {
 	}
 
 	@Override
-	public boolean deletePartById(int id) {
+	public boolean deletePartById(int id) throws SQLException {
 		return partDao.deletePartById(id);
 	}
 
 	@Override
-	public boolean updatePart(int id, Part part) {
+	public boolean updatePart(int id, Part part) throws SQLException {
 		return partDao.updatePart(id, part);
 	}
 

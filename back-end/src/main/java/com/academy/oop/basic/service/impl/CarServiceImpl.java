@@ -4,7 +4,6 @@ import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.service.PartService;
-import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.impl.Logger;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +21,9 @@ public class CarServiceImpl implements CarService {
     public CarServiceImpl() {
     }
 
-    private FileManager fileManager;
     private PartService partService;
     private List<Car> cars;
     private int NUMBER_OF_MINIMUM_PARTS = 3;
-
-    public CarServiceImpl(FileManager fileManager, PartService partService) {
-        this.fileManager = fileManager;
-        this.partService = partService;
-        this.cars = new ArrayList<>();
-    }
 
     public CarServiceImpl(PartService partService) {
         this.partService = partService;
@@ -39,7 +31,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean createCar(String brand, String model, String color) {
+    public boolean createCar(String brand, String model, String color) throws SQLException {
         if (!brand.isEmpty()) {
             if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
                 try {
@@ -58,7 +50,7 @@ public class CarServiceImpl implements CarService {
         return false;
     }
 
-    private void deleteUsedParts() {
+    private void deleteUsedParts() throws SQLException {
         List<Part> tempParts = partService.getParts().stream().filter(p -> !p.isUsed()).collect(Collectors.toList());
         try {
             partService.addParts(tempParts);
@@ -77,7 +69,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean createCar(Car car) {
+    public boolean createCar(Car car) throws SQLException {
         if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
             try {
                 throw new NoSuchFieldException("Not enough parts for your car");
@@ -98,7 +90,7 @@ public class CarServiceImpl implements CarService {
                 .findFirst().get();
     }
 
-    private Car countPrice(Car car) {
+    private Car countPrice(Car car) throws SQLException {
         List<Part> serviceParts = partService.getParts();
 
         Double carPrice = 0.0;

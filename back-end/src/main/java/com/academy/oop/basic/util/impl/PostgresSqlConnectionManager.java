@@ -41,6 +41,7 @@ public class PostgresSqlConnectionManager implements ConnectionManager {
     @Override
     public void closeConnection() throws SQLException {
         connection.close();
+        getStatement().close();
     }
 
 }

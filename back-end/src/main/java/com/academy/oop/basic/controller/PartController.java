@@ -31,7 +31,8 @@ public class PartController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Part> getPartById(@PathVariable int id) {
+	@ExceptionHandler(SQLException.class)
+	public ResponseEntity<Part> getPartById(@PathVariable int id) throws SQLException {
 		if (partService.getPartById(id) != null) {
 			return new ResponseEntity<>(partService.getPartById(id), HttpStatus.OK);
 		}
@@ -39,7 +40,7 @@ public class PartController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Part>> getParts() {
+	public ResponseEntity<List<Part>> getParts() throws SQLException {
 		if (partService.getParts() != null) {
 			return new ResponseEntity<>(partService.getParts(), HttpStatus.OK);
 		}
@@ -47,7 +48,7 @@ public class PartController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Part> updatePart(@PathVariable int id, @RequestBody Part part) {
+	public ResponseEntity<Part> updatePart(@PathVariable int id, @RequestBody Part part) throws SQLException {
 		if (partService.updatePart(id, part)) {
 			return new ResponseEntity<>(part, HttpStatus.OK);
 		}
@@ -55,11 +56,11 @@ public class PartController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Boolean> deletePartById(@PathVariable int id) {
+	public ResponseEntity<Boolean> deletePartById(@PathVariable int id) throws SQLException {
 		if (partService.deletePartById(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		return new ResponseEntity<Boolean>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 

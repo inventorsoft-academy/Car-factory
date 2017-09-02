@@ -24,13 +24,14 @@ public class CustomArrayList<T> extends ArrayList<T> {
 		this.customArrayListElementData = EMPTY_ELEMENT_DATA;
 	}
 
-
+	@Override
 	public boolean add(T e) {
 		ensureCapacity(size + 1);
 		customArrayListElementData[size++] = e;
 		return true;
 	}
 
+	@Override
 	public void add(int index, T element) {
 		ensureCapacity(size + 1);
 		System.arraycopy(customArrayListElementData, index, customArrayListElementData, index + 1,size - index);
@@ -39,6 +40,7 @@ public class CustomArrayList<T> extends ArrayList<T> {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public T get(int index) {
 		if (index >= size){
 			throw new ArrayIndexOutOfBoundsException("array index out of bound exception with index at"+index);

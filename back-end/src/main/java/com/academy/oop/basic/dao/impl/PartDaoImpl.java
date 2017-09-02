@@ -106,9 +106,6 @@ public class PartDaoImpl implements PartDao {
                 part.setUsed( used);
                 return part;
             }
-
-
-
         } catch (ClassNotFoundException | SQLException ex) {
             logger.error(ex.getMessage());
         }
@@ -123,17 +120,15 @@ public class PartDaoImpl implements PartDao {
                         USER_NAME,
                         DB_PASSWORD)) {
             Class.forName(JDBC_DRIVER_NAME);
-
-            String update = "UPDATE public.parts SET _id=?, type=?, price=?, used=? WHERE _id = ?;";
-
+            //TODO fix _id to id
+            String update = "UPDATE public.parts SET type=?, price=?, used=? WHERE _id = ?;";
 
             PreparedStatement statement = connection.prepareStatement(update);
 
-            statement.setInt(5, partId);
-            statement.setInt(1, partId);
-            statement.setString(2, String.valueOf(PartsType.STEERING));
-            statement.setDouble(3, part.getPrice());
-            statement.setBoolean(4, part.isUsed());
+            statement.setInt(4, partId);
+            statement.setString(1, String.valueOf(part.getType()));
+            statement.setDouble(2, part.getPrice());
+            statement.setBoolean(3, part.isUsed());
 
             statement.execute();
             return true;

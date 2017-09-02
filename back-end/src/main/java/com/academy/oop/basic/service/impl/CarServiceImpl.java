@@ -6,7 +6,6 @@ import com.academy.oop.basic.service.CarService;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.FileManager;
 import com.academy.oop.basic.util.impl.Logger;
-import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -44,8 +43,8 @@ public class CarServiceImpl implements CarService {
         if (!brand.isEmpty()) {
             if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
                 try {
-                    throw new NotFoundException("Not enough parts for your car");
-                } catch (NotFoundException e) {
+                    throw new NoSuchFieldException("Not enough parts for your car");
+                }  catch (NoSuchFieldException e) {
                     log.error(e.getMessage());
                     return false;
                 }
@@ -81,8 +80,8 @@ public class CarServiceImpl implements CarService {
     public boolean createCar(Car car) {
         if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
             try {
-                throw new NotFoundException("Not enough parts for your car");
-            } catch (NotFoundException e) {
+                throw new NoSuchFieldException("Not enough parts for your car");
+            }  catch (NoSuchFieldException e) {
                 log.error(e.getMessage());
                 return false;
             }

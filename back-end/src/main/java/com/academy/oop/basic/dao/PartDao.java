@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface PartDao {
 
-    List<Part> getParts();
+    List<Part> getParts() throws SQLException;
 
-    Part getPartById(int id);
+    Part getPartById(int id) throws SQLException;
 
     boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 
-    boolean updatePart(int partId, Part part);
+    boolean updatePart(int partId, Part part) throws SQLException;
 
-    boolean deletePartById(int id);
+    boolean deletePartById(int id) throws SQLException;
 
 }

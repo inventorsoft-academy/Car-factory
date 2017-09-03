@@ -1,6 +1,7 @@
 package com.academy.oop.basic.service.impl;
 
 import com.academy.oop.basic.dao.PartDao;
+import com.academy.oop.basic.exception.NotFoundException;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class PartServiceImpl implements PartService {
 	}
 
 	@Override
-	public Part getPartById(int id) throws SQLException {
+	public Part getPartById(int id) throws SQLException, NotFoundException {
 		return partDao.getPartById(id);
 	}
 

@@ -1,5 +1,6 @@
 package com.academy.oop.basic.service;
 
+import com.academy.oop.basic.exception.NotFoundException;
 import com.academy.oop.basic.model.Part;
 
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ public interface PartService {
 
 	List<Part> getParts() throws SQLException;
 
-	Part getPartById(int id) throws SQLException;
+	Part getPartById(int id) throws SQLException, NotFoundException;
 
 	boolean addPart(Part part) throws SQLException, ClassNotFoundException;
 

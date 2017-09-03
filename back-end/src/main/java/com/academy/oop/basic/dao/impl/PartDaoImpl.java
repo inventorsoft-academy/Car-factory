@@ -3,6 +3,7 @@ package com.academy.oop.basic.dao.impl;
 
 import com.academy.oop.basic.dao.PartDao;
 import com.academy.oop.basic.enums.PartsType;
+import com.academy.oop.basic.exception.NotFoundException;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.util.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,12 @@ import java.util.List;
 @Repository
 public class PartDaoImpl implements PartDao {
 
+    private final ConnectionManager connectionManager;
+
     @Autowired
-    private ConnectionManager connectionManager;
+    public PartDaoImpl(ConnectionManager connectionManager) {
+        this.connectionManager = connectionManager;
+    }
 
     @Override
     public boolean addPart(Part part) throws SQLException, ClassNotFoundException {
@@ -58,7 +63,7 @@ public class PartDaoImpl implements PartDao {
     }
 
     @Override
-    public Part getPartById(int id) throws SQLException {
+    public Part getPartById(int id) throws SQLException, NotFoundException {
 
         String getPartById = "SELECT * FROM parts WHERE id = ?;";
         PreparedStatement statement = connectionManager.getPreparedStatement(getPartById);
@@ -79,7 +84,7 @@ public class PartDaoImpl implements PartDao {
             part.setUsed(used);
             return part;
         }
-        return null;
+        throw new NotFoundException();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.academy.oop.basic.controller;
 
 import com.academy.oop.basic.exception.NotEnoughPartsException;
+import com.academy.oop.basic.exception.NotFoundException;
 import com.academy.oop.basic.util.impl.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,12 +30,17 @@ public class PartExceptionHandler {
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<String> nullPointerException() {
         logger.error("AAA, A NULL IS HERE!!!");
-        return new ResponseEntity<>("null is a bad thing.", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Null is a bad thing.", HttpStatus.NO_CONTENT);
     }
 
     @ExceptionHandler(NotEnoughPartsException.class)
     public ResponseEntity<String> notEnoughPartsException() {
         logger.error("Not enough parts.");
         return new ResponseEntity<>("Not enough parts.", HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> notFoundException() {
+        return new ResponseEntity<>("This part is not exist.",HttpStatus.NOT_FOUND);
     }
 }

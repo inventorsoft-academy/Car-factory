@@ -2,6 +2,7 @@ package com.academy.oop.basic.controller;
 
 
 import com.academy.oop.basic.enums.PartsType;
+import com.academy.oop.basic.exception.NotFoundException;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
 import com.academy.oop.basic.util.impl.Logger;
@@ -42,8 +43,7 @@ public class PartController {
 	}
 
 	@GetMapping("/{id}")
-	@ExceptionHandler(SQLException.class)
-	public ResponseEntity<Part> getPartById(@PathVariable int id) throws SQLException {
+	public ResponseEntity<Part> getPartById(@PathVariable int id) throws SQLException, NotFoundException {
 		if (partService.getPartById(id) != null) {
 			return new ResponseEntity<>(partService.getPartById(id), HttpStatus.OK);
 		}

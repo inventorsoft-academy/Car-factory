@@ -4,6 +4,7 @@ package com.academy.oop.basic.controller;
 import com.academy.oop.basic.enums.PartsType;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.PartService;
+import com.academy.oop.basic.util.impl.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,18 @@ import java.util.List;
 		RequestMethod.OPTIONS})
 public class PartController {
 
+	private Logger logger = Logger.getLogger(PartController.class);
+
 	@Autowired
 	private PartService partService;
 
 	@PostMapping
-	public void createPart(@RequestBody Part part) throws SQLException, ClassNotFoundException {
-		partService.addPart(part);
+	public ResponseEntity<Part> createPart(@RequestBody Part part) throws SQLException, ClassNotFoundException {
+		if (partService.addPart(part)) {
+			return new ResponseEntity<>(part, HttpStatus.CREATED);
+		}
+		logger.error("Part + " + part.toString() + " was not created");
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@GetMapping("/{id}")

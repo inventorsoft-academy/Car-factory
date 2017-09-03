@@ -1,5 +1,8 @@
 package com.academy.oop.basic.util.impl;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,14 +10,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 
+
+@PropertySource("classpath:application.properties")
 public class Logger {
-	private static final String path = "src\\main\\resources\\log\\log.txt";
-	private static final String LOG_FILE_PATH = Logger.class.getClassLoader().getResource("log/log.txt").getFile();
+
+
+	private static final String LOG_FILE_PATH = "D:\\idea\\Car-factory\\back-end\\src\\main\\resources\\log\\log.txt";
 	public static final String IN_CONSOLE = "console";
 	public static final String IN_FILE = "file";
 	public static final String IN_CONSOLE_AND_FILE = "console, file";
 	private static String level = IN_FILE;
-
 
 	private String className;
 	private static Logger logger;
@@ -24,6 +29,8 @@ public class Logger {
 		logger.setClassName(className.getName());
 		return logger;
 	}
+
+
 
 	public void info(String massage) {
 		String log = LocalDateTime.now() + " INFO " + className + " - " + massage;
@@ -44,7 +51,8 @@ public class Logger {
 	}
 
 	private void write(String massage) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(String.valueOf(LOG_FILE_PATH)), true))) {
+		File file = new File(String.valueOf(LOG_FILE_PATH));
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
 			writer.append(massage);
 			writer.newLine();
 			writer.flush();

@@ -49,13 +49,6 @@
             <version>9.1-901-1.jdbc4</version>
         </dependency>
 
-        <!-- Spring JDBC -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>

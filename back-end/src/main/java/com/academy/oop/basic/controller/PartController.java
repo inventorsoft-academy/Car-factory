@@ -63,11 +63,11 @@ public class PartController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Boolean> deletePartById(@PathVariable int id) throws SQLException {
+	public ResponseEntity<Integer> deletePartById(@PathVariable int id) throws SQLException {
 		if (partService.deletePartById(id)) {
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseEntity<>(id, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(id, HttpStatus.NOT_FOUND);
 	}
 
 

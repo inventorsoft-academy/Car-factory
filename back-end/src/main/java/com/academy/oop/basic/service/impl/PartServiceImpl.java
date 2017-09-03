@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class PartServiceImpl implements PartService {
 
+	private final PartDao partDao;
+
 	@Autowired
-	private PartDao partDao;
+	public PartServiceImpl(PartDao partDao) {
+		this.partDao = partDao;
+	}
 
 	@Override
 	public List<Part> getParts() throws SQLException {

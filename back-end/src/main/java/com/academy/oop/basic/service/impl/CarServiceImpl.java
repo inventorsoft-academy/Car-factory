@@ -61,7 +61,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean createCar(Car car) throws SQLException, NotEnoughPartsException, ClassNotFoundException {
         if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
-            throw new NotEnoughPartsException("Not enough parts for your car");
+            throw new NotEnoughPartsException("");
         }
         Car carWithPrice = countPrice(car);
         cars.add(carWithPrice);
@@ -91,9 +91,7 @@ public class CarServiceImpl implements CarService {
                 }
             }
         }
-
         deleteUsedParts();
-
         car.setPrice(carPrice);
         return car;
     }

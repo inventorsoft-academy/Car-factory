@@ -84,7 +84,7 @@ public class PartDaoImpl implements PartDao {
             part.setUsed(used);
             return part;
         }
-        throw new NotFoundException();
+        throw new NotFoundException("");
     }
 
     @Override

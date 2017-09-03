@@ -21,8 +21,12 @@ import java.util.List;
         RequestMethod.OPTIONS})
 public class CarController {
 
+    private final CarService carService;
+
     @Autowired
-    private CarService carService;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @PostMapping
     public ResponseEntity<Car> createCar(@RequestBody Car car) throws SQLException, NoSuchFieldException, ClassNotFoundException {

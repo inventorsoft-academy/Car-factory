@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface CarService {
 
-	boolean createCar(String brand, String model, String color) throws Exception;
-
-	List<Car> getCarsList();
+	List<Car> getCarsList() throws SQLException;
 
 	boolean createCar(Car car) throws SQLException, NoSuchFieldException, ClassNotFoundException;
 

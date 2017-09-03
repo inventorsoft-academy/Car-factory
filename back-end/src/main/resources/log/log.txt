@@ -1,1 +1,13 @@
 2017-09-03T12:07:49.573 ERROR com.academy.oop.basic.controller.PartExceptionHandler - AAA, A NULL IS HERE!!!
+2017-09-03T20:12:39.726 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T20:15:15.626 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T20:23:49.803 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T20:24:02.691 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T20:24:09.582 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T20:59:25.424 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T21:03:13.587 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T21:37:19.813 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T21:48:19.392 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-03T21:48:20.224 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Not enough parts.
+2017-09-03T21:51:57.120 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Not enough parts.
+2017-09-03T21:56:35.336 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!

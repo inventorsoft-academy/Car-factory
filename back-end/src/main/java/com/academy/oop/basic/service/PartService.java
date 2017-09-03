@@ -19,4 +19,6 @@ public interface PartService {
 	boolean deletePartById(int id) throws SQLException;
 
     boolean updatePart(int id, Part part) throws SQLException;
+
+    void deleteUsedParts(List<Part> serviceParts) throws SQLException;
 }

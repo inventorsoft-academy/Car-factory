@@ -53,4 +53,15 @@ public class PartServiceImpl implements PartService {
 		return partDao.updatePart(id, part);
 	}
 
+	@Override
+	public void deleteUsedParts(List<Part> serviceParts) throws SQLException {
+		for (Part servicePart : serviceParts) {
+			for (Part part : partDao.getParts()) {
+				if (servicePart.getPartId() == part.getPartId() && servicePart.isUsed()) {
+					deletePartById(part.getPartId());
+				}
+			}
+		}
+	}
+
 }

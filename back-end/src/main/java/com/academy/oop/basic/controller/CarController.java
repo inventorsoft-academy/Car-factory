@@ -46,7 +46,7 @@ public class CarController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Car>> getCars() {
+    public ResponseEntity<List<Car>> getCars() throws SQLException {
         if (carService.getCarsList() != null) {
             return new ResponseEntity<>(carService.getCarsList(), HttpStatus.OK);
         }

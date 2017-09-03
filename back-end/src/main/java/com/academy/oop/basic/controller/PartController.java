@@ -25,8 +25,12 @@ public class PartController {
 
 	private Logger logger = Logger.getLogger(PartController.class);
 
+	private final PartService partService;
+
 	@Autowired
-	private PartService partService;
+	public PartController(PartService partService) {
+		this.partService = partService;
+	}
 
 	@PostMapping
 	public ResponseEntity<Part> createPart(@RequestBody Part part) throws SQLException, ClassNotFoundException {

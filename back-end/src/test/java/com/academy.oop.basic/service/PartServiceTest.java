@@ -21,6 +21,7 @@ public class PartServiceTest {
 
 
     @Autowired
+    @Mock
     private PartService partService;
 
     @Test

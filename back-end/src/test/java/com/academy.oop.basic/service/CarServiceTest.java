@@ -20,7 +20,7 @@ public class CarServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        partService = new PartServiceImpl();
+
         carService = new CarServiceImpl(partService);
 
     }

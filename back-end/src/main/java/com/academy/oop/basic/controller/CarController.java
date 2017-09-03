@@ -19,14 +19,13 @@ import java.util.List;
         RequestMethod.DELETE,
         RequestMethod.PUT,
         RequestMethod.OPTIONS})
-
 public class CarController {
 
     @Autowired
     private CarService carService;
 
     @PostMapping
-    public ResponseEntity<Car> createCar(@RequestBody Car car) throws SQLException {
+    public ResponseEntity<Car> createCar(@RequestBody Car car) throws SQLException, NoSuchFieldException, ClassNotFoundException {
        if (carService.createCar(car)) {
            return new ResponseEntity<>(car, HttpStatus.CREATED);
        }

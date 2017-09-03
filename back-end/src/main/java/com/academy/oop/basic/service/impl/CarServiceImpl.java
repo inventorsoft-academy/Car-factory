@@ -1,5 +1,6 @@
 package com.academy.oop.basic.service.impl;
 
+import com.academy.oop.basic.exception.NotEnoughPartsException;
 import com.academy.oop.basic.model.Car;
 import com.academy.oop.basic.model.Part;
 import com.academy.oop.basic.service.CarService;
@@ -18,9 +19,6 @@ public class CarServiceImpl implements CarService {
 
     private static final Logger log = Logger.getLogger(CarServiceImpl.class);
 
-    public CarServiceImpl() {
-    }
-
     private PartService partService;
     private List<Car> cars;
     private int NUMBER_OF_MINIMUM_PARTS = 3;
@@ -31,15 +29,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean createCar(String brand, String model, String color) throws SQLException {
+    public boolean createCar(String brand, String model, String color) throws SQLException, ClassNotFoundException {
         if (!brand.isEmpty()) {
             if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
-                try {
-                    throw new NoSuchFieldException("Not enough parts for your car");
-                }  catch (NoSuchFieldException e) {
-                    log.error(e.getMessage());
-                    return false;
-                }
+                throw new NotEnoughPartsException("Not enough parts.");
             }
 
             Car car = new Car(brand, model, color);
@@ -50,16 +43,13 @@ public class CarServiceImpl implements CarService {
         return false;
     }
 
-    private void deleteUsedParts() throws SQLException {
+    private void deleteUsedParts() throws SQLException, ClassNotFoundException {
         List<Part> tempParts = partService.getParts().stream().filter(p -> !p.isUsed()).collect(Collectors.toList());
         try {
             partService.addParts(tempParts);
         } catch (SQLException e) {
             log.error(e.getMessage());
-            throw new RuntimeException("Sql exception");
-        } catch (ClassNotFoundException e) {
-            log.error(e.getMessage());
-            throw new RuntimeException("Class not found");
+            throw new ClassNotFoundException("Sql exception");
         }
     }
 
@@ -69,14 +59,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean createCar(Car car) throws SQLException {
+    public boolean createCar(Car car) throws SQLException, NotEnoughPartsException, ClassNotFoundException {
         if (NUMBER_OF_MINIMUM_PARTS > partService.getParts().size()) {
-            try {
-                throw new NoSuchFieldException("Not enough parts for your car");
-            }  catch (NoSuchFieldException e) {
-                log.error(e.getMessage());
-                return false;
-            }
+            throw new NotEnoughPartsException("Not enough parts for your car");
         }
         Car carWithPrice = countPrice(car);
         cars.add(carWithPrice);
@@ -90,7 +75,7 @@ public class CarServiceImpl implements CarService {
                 .findFirst().get();
     }
 
-    private Car countPrice(Car car) throws SQLException {
+    private Car countPrice(Car car) throws SQLException, ClassNotFoundException {
         List<Part> serviceParts = partService.getParts();
 
         Double carPrice = 0.0;

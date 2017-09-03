@@ -11,7 +11,7 @@ public interface CarService {
 
 	List<Car> getCarsList();
 
-	boolean createCar(Car car) throws SQLException;
+	boolean createCar(Car car) throws SQLException, NoSuchFieldException, ClassNotFoundException;
 
 	Car getCarById(int id);
 }

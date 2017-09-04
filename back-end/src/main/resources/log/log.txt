@@ -1,13 +1,69 @@
-2017-09-03T12:07:49.573 ERROR com.academy.oop.basic.controller.PartExceptionHandler - AAA, A NULL IS HERE!!!
-2017-09-03T20:12:39.726 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T20:15:15.626 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T20:23:49.803 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T20:24:02.691 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T20:24:09.582 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T20:59:25.424 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T21:03:13.587 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T21:37:19.813 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T21:48:19.392 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
-2017-09-03T21:48:20.224 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Not enough parts.
-2017-09-03T21:51:57.120 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Not enough parts.
-2017-09-03T21:56:35.336 ERROR com.academy.oop.basic.controller.PartExceptionHandler - Part not added. Check the fields!
+2017-09-04T12:26:10.331 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.511 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:26:10.512 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.629 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:26:10.695 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.699 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:26:10.699 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.700 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:26:10.704 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.706 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:26:10.706 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:26:10.708 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.265 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.277 ERROR com.academy.oop.basic.util.CustomJob - ERROR: syntax error at or near "NOT"
+  Позиция: 20table not created.
+2017-09-04T12:30:53.278 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.281 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.282 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.283 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.328 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.329 ERROR com.academy.oop.basic.util.CustomJob - ERROR: syntax error at or near "NOT"
+  Позиция: 20table not created.
+2017-09-04T12:30:53.331 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.332 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.332 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.334 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.338 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.340 ERROR com.academy.oop.basic.util.CustomJob - ERROR: syntax error at or near "NOT"
+  Позиция: 20table not created.
+2017-09-04T12:30:53.340 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.342 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:30:53.343 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:30:53.346 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:34.703 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.626 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.628 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.634 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.634 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.639 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.698 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.709 ERROR com.academy.oop.basic.util.CustomJob - ERROR: database "testing_factory" already existstable not created.
+2017-09-04T12:31:44.710 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.711 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.713 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.714 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.718 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.720 ERROR com.academy.oop.basic.util.CustomJob - ERROR: database "testing_factory" already existstable not created.
+2017-09-04T12:31:44.720 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.721 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:31:44.722 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:31:44.723 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:32.985 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.463 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.465 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.471 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.472 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.475 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.537 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.538 ERROR com.academy.oop.basic.util.CustomJob - ERROR: database "test_factory" already existstable not created.
+2017-09-04T12:32:39.539 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.541 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.541 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.542 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.547 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.548 ERROR com.academy.oop.basic.util.CustomJob - ERROR: database "test_factory" already existstable not created.
+2017-09-04T12:32:39.549 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.550 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.
+2017-09-04T12:32:39.551 ERROR com.academy.oop.basic.util.CustomJob - Job is working
+2017-09-04T12:32:39.552 ERROR com.academy.oop.basic.util.CustomJob - Запрос не вернул результатов.table not created.

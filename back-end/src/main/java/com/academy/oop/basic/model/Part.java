@@ -81,16 +81,14 @@ public class Part implements Validator {
 
 		if (getPartId() != part.getPartId()) return false;
 		if (isUsed() != part.isUsed()) return false;
-		if (uniqueId != null ? !uniqueId.equals(part.uniqueId) : part.uniqueId != null) return false;
 		if (getType() != part.getType()) return false;
-		return getPrice().equals(part.getPrice());
+		return getPrice() != null ? getPrice().equals(part.getPrice()) : part.getPrice() == null;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = uniqueId != null ? uniqueId.hashCode() : 0;
-		result = 31 * result + getType().hashCode();
-		result = 31 * result + getPrice().hashCode();
+		int result = getType() != null ? getType().hashCode() : 0;
+		result = 31 * result + (getPrice() != null ? getPrice().hashCode() : 0);
 		result = 31 * result + getPartId();
 		result = 31 * result + (isUsed() ? 1 : 0);
 		return result;
